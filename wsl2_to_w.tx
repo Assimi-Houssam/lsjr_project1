@@ -1,0 +1,17 @@
+hostname -I
+# or
+ip -4 addr show
+
+# run as Administrator
+netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=5173 connectaddress=<WSL_IP> connectport=5173
+
+# allow through Windows Firewall
+New-NetFirewallRule -DisplayName "Vite 5173" -Direction Inbound -Protocol TCP -LocalPort 5173 -Action Allow
+
+#verify
+netsh interface portproxy show all
+netstat -an | findstr 5173
+
+#to remove proxy
+netsh interface portproxy delete v4tov4 listenport=5173 listenaddress=0.0.0.0
+Remove-NetFirewallRule -DisplayName "Vite 5173"
