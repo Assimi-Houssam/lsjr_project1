@@ -1,42 +1,65 @@
 //insanity file feel lazy to think of a better way to do this
 
-import r1q1 from "../assets/r1q1.png";
-import r1q2 from "../assets/r1q2.png";
-import r1q3 from "../assets/r1q3.png";
-import r1q4 from "../assets/r1q4.png";
-import r2q1 from "../assets/r2q1.png";
-import r2q2 from "../assets/r2q2.png";
-import r2q3 from "../assets/r2q3.png";
-import r2q4 from "../assets/r2q4.png";
-import r2q5 from "../assets/r2q5.png";
-import r2q6 from "../assets/r2q6.png";
-import r2q7 from "../assets/r2q7.png";
-import r2q8 from "../assets/r2q8.png";
-import r2q9 from "../assets/r2q9.png";
-import r2q10 from "../assets/r2q10.png";
-import r2q11 from "../assets/r2q11.png";
-import r2q12 from "../assets/r2q12.png";
-import r2q13 from "../assets/r2q13.png";
-import r2q14 from "../assets/r2q14.png";
-import r3q1 from "../assets/r3q1.png";
-import r3q2 from "../assets/r3q2.png";
-import r3q3 from "../assets/r3q3.png";
-import r3q4 from "../assets/r3q4.png";
-import r4q1 from "../assets/r4q1.png";
-import r4q2 from "../assets/r4q2.png";
-import r4q3 from "../assets/r4q3.png";
-import r4q4 from "../assets/r4q4.png";
-import r4q5 from "../assets/r4q5.png";
-import r4q6 from "../assets/r4q6.png";
-import r5q1 from "../assets/r5q1.png";
-import r5q2 from "../assets/r5q2.png";
-import r5q3 from "../assets/r5q3.png";
-import r5q4 from "../assets/r5q4.png";
-import r5q5 from "../assets/r5q5.png";
-import r5q6 from "../assets/r5q6.png";
-import r5q7 from "../assets/r5q7.png";
-import r5q8 from "../assets/r5q8.png";
-import r5q9 from "../assets/r5q9.png";
+import r1q1 from "/src/assets/r1q1.png";
+import r1q2 from "/src/assets/r1q2.png";
+import r1q3 from "/src/assets/r1q3.png";
+import r1q4 from "/src/assets/r1q4.png";
+import r2q1 from "/src/assets/r2q1.png";
+import r2q2 from "/src/assets/r2q2.png";
+import r2q3 from "/src/assets/r2q3.png";
+import r2q4 from "/src/assets/r2q4.png";
+import r2q5 from "/src/assets/r2q5.png";
+import r2q6 from "/src/assets/r2q6.png";
+import r2q7 from "/src/assets/r2q7.png";
+import r2q8 from "/src/assets/r2q8.png";
+import r2q9 from "/src/assets/r2q9.png";
+import r2q10 from "/src/assets/r2q10.png";
+import r2q11 from "/src/assets/r2q11.png";
+import r2q12 from "/src/assets/r2q12.png";
+import r2q13 from "/src/assets/r2q13.png";
+import r2q14 from "/src/assets/r2q14.png";
+import r3q1 from "/src/assets/r3q1.png";
+import r3q2 from "/src/assets/r3q2.png";
+import r3q3 from "/src/assets/r3q3.png";
+import r3q4 from "/src/assets/r3q4.png";
+import r4q1 from "/src/assets/r4q1.png";
+import r4q2 from "/src/assets/r4q2.png";
+import r4q3 from "/src/assets/r4q3.png";
+import r4q4 from "/src/assets/r4q4.png";
+import r4q5 from "/src/assets/r4q5.png";
+import r4q6 from "/src/assets/r4q6.png";
+import r5q1 from "/src/assets/r5q1.png";
+import r5q2 from "/src/assets/r5q2.png";
+import r5q3 from "/src/assets/r5q3.png";
+import r5q4 from "/src/assets/r5q4.png";
+import r5q5 from "/src/assets/r5q5.png";
+import r5q6 from "/src/assets/r5q6.png";
+import r5q7 from "/src/assets/r5q7.png";
+import r5q8 from "/src/assets/r5q8.png";
+import r5q9 from "/src/assets/r5q9.png";
+import r6q1 from "/src/assets/r6q1.png";
+import r6q2 from "/src/assets/r6q2.png";
+import r6q3 from "/src/assets/r6q3.png";
+import r6q4 from "/src/assets/r6q4.png";
+import r6q5 from "/src/assets/r6q5.png"
+import r6q6 from "/src/assets/r6q6.png"
+import r7q1 from "/src/assets/r7q1.png"
+import r7q2 from "/src/assets/r7q2.png"
+import r7q3 from "/src/assets/r7q3.png"
+import r7q4 from "/src/assets/r7q4.png"
+import r7q5 from "/src/assets/r7q5.png"
+import r7q6 from "/src/assets/r7q6.png"
+import r7q7 from "/src/assets/r7q7.png"
+import r8q1 from "/src/assets/r8q1.png"
+import r8q2 from "/src/assets/r8q2.png"
+import r8q3 from "/src/assets/r8q3.png"
+import r8q4 from "/src/assets/r8q4.png"
+import r8q5 from "/src/assets/r8q5.png"
+import r8q6 from "/src/assets/r8q6.png"
+
+
+
+
 
 export const choices = [
   // regle 1
@@ -372,8 +395,16 @@ export const choices = [
           text: "نعم، تم فحص الغلاف الجوي من قبل رجل إطفاء قبل بدء العمل.لذلك، لا بأس، لا حاجة لأجهزة الكشف عن الغاز الفردية يمكنك إقاف تشغلها،فهي اختيرية",
           isCorrect: true,
         },
-        { id: "b", text: "نعم، طالما أ زميلا واحدا على الأقل لديه محلل غاز شخصي قيد التشغيل و يعمل بشكل صحيح فهذا يكفي", isCorrect: false },
-        { id: "c", text: "لا،يجب على الشخص الذي لديه محلل الغاز المغق أو المعطل التوقف عن العمل ومغدرة المكان المحصور،أجهزة الكشف عن الغاز الفردية إلزامية و يجب أن تعمل دائما من لحضة دخولك إلى مكان ضيق", isCorrect: false },
+        {
+          id: "b",
+          text: "نعم، طالما أ زميلا واحدا على الأقل لديه محلل غاز شخصي قيد التشغيل و يعمل بشكل صحيح فهذا يكفي",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "لا،يجب على الشخص الذي لديه محلل الغاز المغق أو المعطل التوقف عن العمل ومغدرة المكان المحصور،أجهزة الكشف عن الغاز الفردية إلزامية و يجب أن تعمل دائما من لحضة دخولك إلى مكان ضيق",
+          isCorrect: false,
+        },
       ],
     },
     {
@@ -381,11 +412,26 @@ export const choices = [
       questionNumber: 5,
       imageUrl: r4q5,
       choice: [
-        { id: "a", text: "يجب علي الشخص الذي يصدر التصفير إعادة ضبط الكاشف الخاص به، فمن المحتمل أن يكون إندارا كاذبا", isCorrect: true },
-        { id: "b", text: "يجب أن يقترب الشخص الذي لديه كاشف أخضر من زميله للتحقق مما إدا كان الكاشف الخاص به يبدَ أيضا في إصدار صوت تنبيه", isCorrect: false },
-        { id: "c", text: "يجب أن يتوقف الشخص الذي لديه كاشف التصغير عن العمل، و يتحرك نحو زميله، و يعيد ضبط الكاشف ثم يعود إلى مهمته، فقط إذا بدَ جهازا الكشف الخاص به في إصدار صوت تنبيه مرة أخرى، يجب عليه التوقف وإخلاء المكان ", isCorrect: false },
-        { id: "d", text: "يجب علي كلاهما التوقف و الإخلاء. هناك خطأ ما، و يمكن أ يتدهور بسرعة كبيرة", isCorrect: false },
-
+        {
+          id: "a",
+          text: "يجب علي الشخص الذي يصدر التصفير إعادة ضبط الكاشف الخاص به، فمن المحتمل أن يكون إندارا كاذبا",
+          isCorrect: true,
+        },
+        {
+          id: "b",
+          text: "يجب أن يقترب الشخص الذي لديه كاشف أخضر من زميله للتحقق مما إدا كان الكاشف الخاص به يبدَ أيضا في إصدار صوت تنبيه",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "يجب أن يتوقف الشخص الذي لديه كاشف التصغير عن العمل، و يتحرك نحو زميله، و يعيد ضبط الكاشف ثم يعود إلى مهمته، فقط إذا بدَ جهازا الكشف الخاص به في إصدار صوت تنبيه مرة أخرى، يجب عليه التوقف وإخلاء المكان ",
+          isCorrect: false,
+        },
+        {
+          id: "d",
+          text: "يجب علي كلاهما التوقف و الإخلاء. هناك خطأ ما، و يمكن أ يتدهور بسرعة كبيرة",
+          isCorrect: false,
+        },
       ],
     },
     {
@@ -393,9 +439,17 @@ export const choices = [
       questionNumber: 6,
       imageUrl: r4q6,
       choice: [
-        { id: "a", text: "1", isCorrect: true },
-        { id: "b", text: "2", isCorrect: false },
-        { id: "c", text: "3", isCorrect: false },
+        { id: "a", text: "يجب أ يذهب لإنقاذ الشخص الجامد", isCorrect: true },
+        {
+          id: "b",
+          text: "يمكنه الدخول جهاز الكشف عن الغاز، ويحاول إنقاذ الشخص",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "يجب ألا يخل المكان الضيق،الذي قد يكون ملوثا،ولكن يجب تنبيه خدمات لإنقاذ على الفور،يمكن فقط لأشخاص الذين لديهم أجهزة تنفسية مستقلة",
+          isCorrect: false,
+        },
       ],
     },
   ],
@@ -509,14 +563,229 @@ export const choices = [
     },
   ],
   //regle 6
-  [],
+  [
+    {
+      title: "هل يتم احترام القاعدة الذهبية لإنقاد الحياة؟",
+      questionNumber: 1,
+      imageUrl: r6q1,
+      choice: [
+        { id: "a", text: "لا،لايتم احترام القاعدة", isCorrect: true },
+        { id: "b", text: "نعم، يتم احترام القاعدة", isCorrect: false },
+      ],
+    },
+    {
+      title: "هل يتم احترام القاعدة الذهبية لإنقاد الحياة؟",
+      questionNumber: 2,
+      imageUrl: r6q2,
+      choice: [
+        { id: "a", text: "لا،لايتم احترام القاعدة", isCorrect: true },
+        { id: "b", text: "نعم، يتم احترام القاعدة", isCorrect: false },
+      ],
+    },
+    {
+      title: "هل يتم احترام القاعدة الذهبية لإنقاد الحياة؟",
+      questionNumber: 3,
+      imageUrl: r6q3,
+      choice: [
+        { id: "a", text: "لا،لايتم احترام القاعدة", isCorrect: true },
+        { id: "b", text: "نعم، يتم احترام القاعدة", isCorrect: false },
+      ],
+    },
+    {
+      title: "هل يتم احترام القاعدة الذهبية لإنقاد الحياة؟",
+      questionNumber: 4,
+      imageUrl: r6q4,
+      choice: [
+        { id: "a", text: "لا،لايتم احترام القاعدة", isCorrect: true },
+        { id: "b", text: "نعم، يتم احترام القاعدة", isCorrect: false },
+      ],
+    },
+    {
+      title: "هل يتم احترام القاعدة الذهبية لإنقاد الحياة؟",
+      questionNumber: 5,
+      imageUrl: r6q5,
+      choice: [
+        {
+          id: "a",
+          text: "لا،لايتم احترام القاعدة،وليس هناك رؤية كافية",
+          isCorrect: true,
+        },
+        { id: "b", text: "نعم، يتم احترام القاعدة", isCorrect: false },
+      ],
+    },
+    {
+      title: "هل السائق يحترم القاعدة الذهبية بخصوص وضعية الرافعة الشوكي؟",
+      questionNumber: 6,
+      imageUrl: r6q6,
+      choice: [
+        { id: "a", text: "لا،لايتم احترام القاعدة", isCorrect: true },
+        { id: "b", text: "نعم، يتم احترام القاعدة", isCorrect: false },
+      ],
+    },
+  ],
+  //regle 7
+  [
+    {
+      title: "هل تمثل هذه الوضعيات خطرا متعلقا بالسكك الحديدية؟",
+      questionNumber: 1,
+      imageUrl: r7q1,
+      choice: [
+        { id: "a", text: "لا", isCorrect: true },
+        { id: "b", text: "نعم", isCorrect: false },
+      ],
+    },
+
+    {
+      title: "هل تمثل هذه الوضعيات خطرا متعلقا بالسكك الحديدية؟",
+      questionNumber: 2,
+      imageUrl: r7q2,
+      choice: [
+        {
+          id: "a",
+          text: "نعم أي معبر للسكك الحديدية يمتل خطرا على السكك الحديدية يتم التحكم المخاطر (الصطام أوالتدحرج) بشكل جيد نسبيا، لكن لا يزال قائما، لا يزال من الممكن وقوع حادث، حتى لو تقليل الحتمال بشكل كبير،  بسبب عناصر التحكم الهدسية، الخطر موجود،الخطر منخفض",
+          isCorrect: true,
+        },
+        {
+          id: "b",
+          text: "لا، لقد أزلت الضوابط مخاطر السكك مخاطر السكك الحديدية(وبالتالي جميع المخاطر المرتبطة بها)",
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      title: "نعم، يتم احترام القاعدة",
+      questionNumber: 3,
+      imageUrl: r7q3,
+      choice: [
+        { id: "a", text: "لا", isCorrect: true },
+        { id: "b", text: "نعم", isCorrect: false },
+      ],
+    },
+    {
+      title: "نعم، يتم احترام القاعدة",
+      questionNumber: 4,
+      imageUrl: r7q4,
+      choice: [
+        { id: "a", text: "لا", isCorrect: true },
+        { id: "b", text: "نعم", isCorrect: false },
+      ],
+    },
+    {
+      title: "نعم، يتم احترام القاعدة",
+      questionNumber: 5,
+      imageUrl: r7q5,
+      choice: [
+        { id: "a", text: "لا", isCorrect: true },
+        { id: "b", text: "نعم", isCorrect: false },
+      ],
+    },
+    {
+      title: "نعم، يتم احترام القاعدة",
+      questionNumber: 6,
+      imageUrl: r7q6,
+      choice: [
+        { id: "a", text: "لا", isCorrect: true },
+        { id: "b", text: "نعم", isCorrect: false },
+      ],
+    },
+    {
+      title: "نعم، يتم احترام القاعدة",
+      questionNumber: 7,
+      imageUrl: r7q7,
+      choice: [
+        { id: "a", text: "لا", isCorrect: true },
+        { id: "b", text: "نعم", isCorrect: false },
+      ],
+    },
+  ],
+
+  [
+    {
+      title: "هل يمثل الرسم في بيئةأومساحة قريبة خطر الغاز أو خطر الانفجار؟",
+      questionNumber: 1,
+      imageUrl: r8q1,
+      choice: [
+        { id: "a", text: "لا", isCorrect: true },
+        { id: "b", text: "نعم", isCorrect: false },
+      ],
+    },
+    {
+      title: "",
+      questionNumber: 2,
+      imageUrl: r8q2,
+      choice: [
+        { id: "a", text: "لا", isCorrect: true },
+        { id: "b", text: "نعم", isCorrect: false },
+        ,
+      ],
+    },
+    {
+      title: "",
+      questionNumber: 2,
+      imageUrl: r8q2,
+      choice: [
+        { id: "a", text: "لا", isCorrect: true },
+        { id: "b", text: "نعم", isCorrect: false },
+        ,
+      ],
+    },
+    {
+      title: "",
+      questionNumber: 2,
+      imageUrl: r8q2,
+      choice: [
+        { id: "a", text: "لا", isCorrect: true },
+        { id: "b", text: "نعم", isCorrect: false },
+        ,
+      ],
+    },
+    {
+      title: "",
+      questionNumber: 3,
+      imageUrl: r8q3,
+      choice: [
+        { id: "a", text: "لا", isCorrect: true },
+        { id: "b", text: "نعم", isCorrect: false },
+        ,
+      ],
+    },
+    {
+      title: "",
+      questionNumber: 4,
+      imageUrl: r8q4,
+      choice: [
+        { id: "a", text: "لا", isCorrect: true },
+        { id: "b", text: "نعم", isCorrect: false },
+        ,
+      ],
+    },
+    {
+      title: "",
+      questionNumber: 5,
+      imageUrl: r8q5,
+      choice: [
+        { id: "a", text: "لا", isCorrect: true },
+        { id: "b", text: "نعم", isCorrect: false },
+        ,
+      ],
+    },
+    {
+      title: "",
+      questionNumber: 6,
+      imageUrl: r8q6,
+      choice: [
+        { id: "a", text: "", isCorrect: true },
+        { id: "b", text: "", isCorrect: false },
+      ],
+    },
+  ],
   // {
-  //  title: "",
-  //  questionNumber: 1,
-  //  imageUrl: r4q1,
-  //  choice: [
-  //    { id: "a", text: "", isCorrect: true },
-  //    { id: "b", text: "", isCorrect: false },
-  //  ],
+  //   title: "",
+  //   questionNumber: 1,
+  //   imageUrl: r8q1,
+  //   choice: [
+  //     { id: "a", text: "", isCorrect: true },
+  //     { id: "b", text: "", isCorrect: false },
+  //   ],
   // },
 ];

@@ -84,7 +84,7 @@ function Quiz() {
           setAnswer={setAnswer}
           questions={rules[currentRuleIndex]}
           title={titles[currentRuleIndex]}
-          choices={choices[currentRuleIndex]}
+          choices={choices[currentRuleIndex] as unknown as any}
           regleIndex={currentRuleIndex + 1}
           onRuleComplete={handleRuleComplete}
         />

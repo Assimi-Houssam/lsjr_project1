@@ -24,8 +24,8 @@ interface Props {
     value: boolean
   ) => Promise<Answer[][]>;
   questions: (boolean | null)[];
-  title: string;
   choices: Choices;
+  title: string;
   regleIndex?: number;
   onRuleComplete?: (success: boolean) => void;
 }
@@ -48,7 +48,7 @@ export default function Regles({
 
   useEffect(() => {
 
-  }, [regleIndex, choices.length, title]);
+  }, [regleIndex, title]);
 
 
 

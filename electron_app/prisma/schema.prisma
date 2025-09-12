@@ -1,0 +1,49 @@
+// ...new file...
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Session {
+  id         String      @id @default(cuid())
+  sessionId  String      @unique
+  name       String
+  createdAt  DateTime    @default(now())
+  synced     Boolean     @default(false)
+  participants Participant[]
+}
+
+
+model lsgrResult {
+  id         String   @id @default(cuid())
+  participantId String @unique
+  participant Participant @relation(fields: [participantId], references: [id])
+  lsgr1     Boolean @default(false)
+  lsgr2     Boolean @default(false)
+  lsgr3     Boolean @default(false)
+  lsgr4     Boolean @default(false)
+  lsgr5     Boolean @default(false)
+  lsgr6     Boolean @default(false)
+  lsgr7     Boolean @default(false)
+  lsgr8     Boolean @default(false)
+  lsgr9     Boolean @default(false)
+  lsgr10    Boolean @default(false)
+  createdAt  DateTime @default(now())
+}
+
+model Participant {
+  id        String   @id @default(cuid())
+  session   Session  @relation(fields: [sessionId], references: [id])
+  sessionId String
+  name      String
+  company   String
+  cin       String
+  motif     String
+  results   lsgrResult?
+  createdAt DateTime @default(now())
+  synced    Boolean  @default(false)
+}
