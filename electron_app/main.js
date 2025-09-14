@@ -51,7 +51,7 @@ function stopViteDevServer() {
 async function startHttpServer() {
     const appServer = express()
     appServer.use(cors())
-    appServer.use(bodyParser.json({ limit: '1mb' }))
+    appServer.use(bodyParser.json({ limit: '2mb' }))
 
     if (fs.existsSync(QUIZ_DIST)) {
         appServer.use('/', express.static(QUIZ_DIST))
@@ -74,44 +74,48 @@ async function startHttpServer() {
         })
     }
 
-    appServer.get('/health', (req, res) => res.json({ ok: true }))
-
-    appServer.get('/server-info', (req, res) => {
-        const ip = getLocalIPv4()
-        res.json({ ok: true, url: `http://${ip}:${HTTP_PORT}` })
-    })
-
 
     appServer.post('/submit-result', async (req, res) => {
         try {
-            const payload = req.body
-            if (!payload || typeof payload.sessionId !== 'string') {
+            const {sessionid ,  data } = req.body
+            if (!sessionid || typeof sessionid !== 'string' || !data || typeof data !== 'object') {
                 return res.status(400).json({ ok: false, error: 'missing or invalid sessionId' })
             }
-
             if (!prisma) {
                 console.warn('Prisma not initialized; accepted payload but did not persist:', payload)
                 return res.status(202).json({ ok: true, note: 'received but not stored (no DB)' })
             }
-
             // find or create session
-            let session = await prisma.session.findUnique({ where: { sessionId: payload.sessionId } })
+            const  session = await prisma.session.findUnique({ where: { sessionId: sessionid } })
             if (!session) {
-                session = await prisma.session.create({ data: { sessionId: payload.sessionId, name: payload.sessionName || 'unnamed' } })
+                return res.status(400).json({ ok: false, error: 'session not found' })
             }
 
             const participant = await prisma.participant.create({
                 data: {
                     sessionId: session.id,
-                    name: payload.name || '',
-                    company: payload.company || null,
-                    cin: payload.cin || '',
-                    motif: payload.motif || null,
-                    results: payload.results || {},
+                    name: data.name || '',
+                    company: data.company || null,
+                    cin: data.cin || '',
+                    motif: data.motif || null,
                 },
             })
-
-            return res.json({ ok: true, id: participant.id })
+            const ressult =  await prisma.lsgrResult.create({
+                data: {
+                    participantId: participant.id,
+                    lsgr1: data.lsgr1 || false,
+                    lsgr2: data.lsgr2 || false,
+                    lsgr3: data.lsgr3 || false,
+                    lsgr4: data.lsgr4 || false,
+                    lsgr5: data.lsgr5 || false,
+                    lsgr6: data.lsgr6 || false,
+                    lsgr7: data.lsgr7 || false,
+                    lsgr8: data.lsgr8 || false,
+                    lsgr9: data.lsgr9 || false,
+                    lsgr10: data.lsgr10 || false,
+                },
+            })
+            return res.json({ ok: true})
         } catch (err) {
             console.error('submit-result error:', err)
             return res.status(500).json({ ok: false, error: String(err) })
@@ -139,29 +143,55 @@ ipcMain.handle('create-session', async (ev, sessionName) => {
     return { sessionId, name: sessionName, serverUrl }
 })
 
-ipcMain.handle('get-server-info', async () => ({ serverUrl, port: HTTP_PORT }))
-
-
 // add pagination  exclude the participant for now 
-ipcMain.handle('get-sessions', async () => {
-    if (!prisma) return []
-    return prisma.session.findMany({ orderBy: { createdAt: 'desc' }, include: { participants: true } })
+ipcMain.handle('session-qr', async (ev, sessionId) => {
+    if (!prisma) return { ok: false, error: 'no DB' }
+    if (!serverUrl) return { ok: false, error: 'server not started' }
+    const session = await prisma.session.findUnique({ where: { sessionId } })
+    if (!session) return { ok: false, error: 'session not found' }
+    return { ok: true, qrData: `${serverUrl}/?sessionId=${session.sessionId}` }
 })
+ipcMain.handle('get-sessions', async (ev, opt = {}) => {
+    const { page = 1, pageSize = 20, search, to, from } = opt
+    if (!prisma) return []
 
+    const where = {
+        ...(search && { name: { contains: search, mode: 'insensitive' } }),
+        ...(from && { createdAt: { gte: from } }),
+        ...(to && { createdAt: { lte: to } }),
+    }
+    const sessions = await prisma.session.findMany({
+        where,
+        orderBy: { createdAt: 'desc' },
+        skip: (page - 1) * pageSize,
+        take: pageSize,
+    })
 
+    return sessions
+})
 ipcMain.handle('get-participants', async (ev, sessionId) => {
     if (!prisma) return []
-    return prisma.participant.findMany({ where: { sessionId }, orderBy: { createdAt: 'desc' } })
+    const session = await prisma.session.findUnique({ where: { sessionId }, include: { participants: { include: { results: true } } } })
+    if (!session) return []
+    return session.participants.map(p => ({
+        id: p.id,
+        name: p.name,
+        company: p.company,
+        cin: p.cin,
+        motif: p.motif,
+        results: p.results,
+    }))
 })
 
+// still  need to work around this  in the front end so i know tabel and entrie 
+ipcMain.handle('get-particpant-details', async (ev, participantId) => {}) //
+
+// this until second app finished
+ipcMain.handle('login', async (ev, username, password) => {}) //
+ipcMain.handle('logout', async (ev) => {})//
+ipcMain.handle('sync-now', async (ev) => {})//
 
 
-ipcMain.handle('get-particpant-details', async (ev, participantId) => {})
-
-ipcMain.handle('login', async (ev, username, password) => {})
-
-// for qr code auth
-ipcMain.handle('try-to-login', async (ev, token) => {})
 
 
 // --- app icon setup ---

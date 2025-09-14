@@ -5,6 +5,7 @@ import Navbar from "./layout/Layouts";
 import Thequiz from "./pages/Thequiz";
 import CreateSession from "./pages/Createsession";
 import Getsession from "./pages/Getsession";
+import Qrscanner from "./pages/camera";
 
 function App() {
   const [page, setPage] = useState("create");
@@ -26,16 +27,19 @@ function App() {
   };
 
   return (
-    <Navbar
-      onCreateSession={handleCreateSession}
-      onDemoQuiz={handleDemoQuiz}
-      onGetSession={handleGetSession}
-      >
+    <div>
+      < Qrscanner />
+    </div>
+    // <Navbar
+    //   onCreateSession={handleCreateSession}
+    //   onDemoQuiz={handleDemoQuiz}
+    //   onGetSession={handleGetSession}
+    //   >
 
-      {page === "create" && <CreateSession key={`create-${pageKey}`} />}
-      {page === "demo" && <Thequiz key={`demo-${pageKey}`} />}
-      {page === "get" && <Getsession key={`get-${pageKey}`} />}
-    </Navbar> 
+    //   {page === "create" && <CreateSession key={`create-${pageKey}`} />}
+    //   {page === "demo" && <Thequiz key={`demo-${pageKey}`} />}
+    //   {page === "get" && <Getsession key={`get-${pageKey}`} />}
+    // </Navbar> 
   );
 }
 

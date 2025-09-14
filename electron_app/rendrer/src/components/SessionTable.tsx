@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import QRCodeDisplay from "./Qrcode";
 
 interface sessiontable {
   id: string;
@@ -16,7 +17,18 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [isFullscreen, setIsFullscreen] = useState(true);
   const itemsPerPage = 7;
+  const [showQR, setShowQRCode] = useState(false);
+  const [sessionData, setSessionData] = useState<{
+    sessionName: string;
+    sessionId: string;
+    serverUrl?: string;
+  } | null>({
+    sessionId: "sadadas",
+    sessionName: "asdasd",
+    serverUrl: "http://localhost:3000",
+  });
 
   // Filter sessions based on search term and date range
   const filteredSessions = useMemo(() => {
@@ -45,6 +57,10 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
     startIndex + itemsPerPage
   );
 
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+  };
+
   // Reset to first page when filters change
   const handleFilterChange = () => {
     setCurrentPage(1);
@@ -69,6 +85,12 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
     setCurrentPage(page);
   };
 
+  const showQRCode = (sessionId: string) => {
+
+    /// TODO: fetch session data from ipc
+    setShowQRCode(true);
+  };
+
   const getPaginationRange = () => {
     const range = [];
     const maxVisible = 5;
@@ -84,6 +106,15 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
     }
     return range;
   };
+
+  useEffect(() => {
+    if (!showQR) return; // only add listener when modal is open
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowQRCode(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [showQR]);
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-6 mb-6 ">
@@ -153,6 +184,9 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
               <th className="border border-orange-300 px-4 py-3 text-left font-semibold">
                 Date
               </th>
+              <th className="border border-orange-300 px-4 py-3 text-left font-semibold">
+                Actions
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -169,6 +203,17 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
                 </td>
                 <td className="border border-gray-300 px-4 py-3 text-gray-700">
                   {new Date(session.date).toLocaleDateString()}
+                </td>
+                <td className="border border-gray-300 px-4 py-3 text-gray-700">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      showQRCode(session.id);
+                    }}
+                    className="px-3 py-1 bg-orange-400 text-white rounded hover:bg-orange-500 transition-all duration-200"
+                  >
+                    show QR Code
+                  </button>
                 </td>
               </tr>
             ))}
@@ -233,6 +278,32 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
             >
               Next →
             </button>
+          </div>
+        </div>
+      )}
+
+      {showQR && (
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
+          onClick={() => setShowQRCode(false)} // clicking overlay closes modal
+        >
+          <div
+            className="bg-white p-6 rounded-lg shadow-lg relative"
+            onClick={(e) => e.stopPropagation()} // prevent inner clicks from closing
+          >
+            <button
+              onClick={() => setShowQRCode(false)}
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+            >
+              &times;
+            </button>
+            <h3 className="text-lg font-semibold mb-4">Session QR Code</h3>
+
+            <QRCodeDisplay
+              sessionData={sessionData!}
+              isFullscreen={true}
+              onToggleFullscreen={toggleFullscreen}
+            />
           </div>
         </div>
       )}

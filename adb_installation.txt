@@ -1,0 +1,36 @@
+# 1) download zip
+$zip = "$env:USERPROFILE\Downloads\platform-tools-latest-windows.zip"
+Invoke-WebRequest -Uri "https://dl.google.com/android/repository/platform-tools-latest-windows.zip" -OutFile $zip -UseBasicParsing
+
+# 2) extract to AppData\Local\Android
+$base = "$env:USERPROFILE\AppData\Local\Android"
+Remove-Item -Recurse -Force "$base\platform-tools" -ErrorAction SilentlyContinue
+Expand-Archive -Path $zip -DestinationPath $base -Force
+
+# 3) if nested platform-tools\platform-tools exists, flatten it
+$dest = "$base\platform-tools"
+if (Test-Path "$dest\platform-tools") {
+  Move-Item -Path "$dest\platform-tools\*" -Destination $dest -Force
+  Remove-Item -Path "$dest\platform-tools" -Recurse -Force
+}
+
+# 4) verify adb exists and show version
+Test-Path "$dest\adb.exe"
+& "$dest\adb.exe" version
+
+# 5) start adb server and list devices (unlock phone and accept RSA prompt)
+& "$dest\adb.exe" kill-server
+& "$dest\adb.exe" start-server
+& "$dest\adb.exe" devices
+
+# 6) create reverse so phone's localhost:5173 maps to PC localhost:5173
+& "$dest\adb.exe" reverse tcp:5173 tcp:5173
+
+# 7) verify Windows can reach your dev server (run this on Windows where Vite is reachable)
+curl http://localhost:5173
+
+# (optional) remove reverse later
+# & "$dest\adb.exe" reverse --remove tcp:5173
+
+# (optional) add platform-tools to user PATH permanently (restart terminals afterwards)
+[Environment]::SetEnvironmentVariable("PATH", $env:PATH + ";" + $dest, "User")

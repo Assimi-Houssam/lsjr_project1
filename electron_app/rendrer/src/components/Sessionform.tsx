@@ -11,9 +11,7 @@ const SessionForm: React.FC<SessionFormProps> = ({ onCreateSession }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!sessionName.trim()) return;
-
     setIsLoading(true);
-
     // Simulate API call delay
     setTimeout(() => {
       onCreateSession(sessionName.trim());
