@@ -13,9 +13,9 @@ export default function Navbar({
   children,
 }: NavbarProps) {
   return (
-    <div className="flex h-screen ">
+    <div className="flex h-screen bg-gray-100 ">
       {/* Fixed Sidebar */}
-      <div className="fixed left-0 top-0 h-full w-56 bg-gradient-to-b from-orange-500/80 to-orange-500/70 z-10 ">
+      <div className="fixed left-4 top-4 bottom-4 w-56 bg-gradient-to-b from-orange-500/80 to-orange-500/70 z-10 rounded-2xl shadow-lg  shadow-black/40 ">
         {/* Logo Section */}
         <div className="flex items-center justify-center">
           <img

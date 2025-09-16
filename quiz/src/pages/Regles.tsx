@@ -53,7 +53,7 @@ export default function Regles({
 
 
   const handleNext = async (
-    selectedAnswer: string | null,
+    _selectedAnswer: string | null,
     isCorrect: boolean
   ) => {
     const updatedRules = await setAnswer(

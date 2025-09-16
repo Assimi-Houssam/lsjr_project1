@@ -11,13 +11,14 @@ function Qrscanner() {
 
   useEffect(() => {
     return () => {
-      // cleanup on unmount
+      // cleanup  on umount  teh component so there no leak 
       if (qrScannerRef.current) {
         qrScannerRef.current.destroy();
       }
     };
   }, []);
 
+  // start the camera and qr scanner
   const startCamera = async () => {
     setError(null);
     try {

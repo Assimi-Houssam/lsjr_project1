@@ -1,4 +1,3 @@
-import React from "react";
 import leftLogo from "../../public/logo1.png";
 import rightLogo from "../../public/logo2.png";
 

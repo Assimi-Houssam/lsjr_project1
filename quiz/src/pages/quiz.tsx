@@ -17,12 +17,12 @@ export interface define {
 
 function Quiz() {
   // const QUESTIONS_PER_RULE = [4, 14, 4,6,9,6,7,8,4,6];
-  const QUESTIONS_PER_RULE = [4, 14];
+  const QUESTIONS_PER_RULE = [4];
   // initialize with `null` (unanswered). each sub-array can have different length.
   const [rules, setRules] = useState<Answer[][]>(() =>
     QUESTIONS_PER_RULE.map((count) => Array(count).fill(false))
   );
-  const [dfine, setDefine] = useState<define>({
+  const [_dfine, setDefine] = useState<define>({
     name: "",
     company: "",
     cin: "",
@@ -47,7 +47,7 @@ function Quiz() {
     });
   };
 
-  const handleRuleComplete = (success: boolean) => {
+  const handleRuleComplete = async (success: boolean) => {
     console.log(
       `Rule ${currentRuleIndex + 1} completed with success: ${success}`
     );
@@ -65,7 +65,26 @@ function Quiz() {
       //   const next = prev + 1;
       //   return next;
       // });
+      const urlParams = new URLSearchParams(window.location.search);
+      const myParam = urlParams.get("sessionId");
+      const url  =  urlParams.get("url");
+      console.log('url',url);
 
+      await fetch("http://127.0.0.1:3000/submit-result", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sessionId: myParam,
+          define: _dfine, // _dfine should be your session id
+          data: rules, // rules should be your data object
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+        });
       console.log("All rules completed!");
     }
   };

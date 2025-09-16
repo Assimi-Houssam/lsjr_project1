@@ -12,11 +12,12 @@ declare global {
   }
 
   interface Window {
-    lsjr?: {
+    api?: {
       createSession: (name: string) => Promise<{ sessionId: string; serverUrl?: string }>
       getServerInfo: () => Promise<{ serverUrl?: string; port?: number }>
-      getSessions: (opts: GetSessionsOpts) => Promise<any[]>
-      getSession: (sessionId: string) => Promise<{ sessionId: string; serverUrl?: string }>
+      getSessions: (opts: GetSessionsOpts) => Promise<{ sessions: any[]; totalPages: number }>
+      getSession: (sessionId: string) => Promise<{ sessionId: string; serverUrl?: string; ok: boolean; }>
+      getParticipant(sessionId: string): Promise<any>
 
     }
   }

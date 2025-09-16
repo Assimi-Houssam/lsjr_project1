@@ -1,26 +1,24 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import QRCodeDisplay from "./Qrcode";
 
 interface sessiontable {
   id: string;
-  sessionName: string;
-  date: string;
+  name: string;
+  createdAt?: string | Date;
 }
 
 interface Props {
-  sessions: sessiontable[];
   onSessionClick: (sessionId: string) => void;
 }
 
-export default function SessionTable({ sessions, onSessionClick }: Props) {
+export default function SessionTable({ onSessionClick }: Props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(true);
-  const itemsPerPage = 7;
   const [showQR, setShowQRCode] = useState(false);
-  const [sessionData, setSessionData] = useState<{
+  const [sessionData, _setSessionData] = useState<{
     sessionName: string;
     sessionId: string;
     serverUrl?: string;
@@ -29,50 +27,55 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
     sessionName: "asdasd",
     serverUrl: "http://localhost:3000",
   });
+  const [sessions, setSessions] = useState<sessiontable[]>([]);
+  const [totalPages, setTotalPages] = useState(1);
 
-  // Filter sessions based on search term and date range
-  const filteredSessions = useMemo(() => {
-    return sessions.filter((session) => {
-      const matchesSearch = session.sessionName
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase());
+  useEffect(() => {
+    // Reset selected session when component mounts
+    const fetchSessions = async () => {
+      if (window.api && typeof window.api.getSessions === "function") {
+        try {
+          const sessions = await window.api.getSessions({});
+          console.log("Fetched sessions:", sessions);
+          setSessions(sessions.sessions || []);
+          setTotalPages(sessions.totalPages || 1);
+          console.log("Fetched sessions on mount:", sessions);
+        } catch (error) {
+          console.error("Error fetching sessions:", error);
+        }
+      }
+    };
 
-      const sessionDate = new Date(session.date);
-      const fromDate = dateFrom ? new Date(dateFrom) : null;
-      const toDate = dateTo ? new Date(dateTo) : null;
-
-      const matchesDateRange =
-        (!fromDate || sessionDate >= fromDate) &&
-        (!toDate || sessionDate <= toDate);
-
-      return matchesSearch && matchesDateRange;
-    });
-  }, [sessions, searchTerm, dateFrom, dateTo]);
-
-  // Pagination logic
-  const totalPages = Math.ceil(filteredSessions.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const paginatedSessions = filteredSessions.slice(
-    startIndex,
-    startIndex + itemsPerPage
-  );
+    fetchSessions();
+  }, []);
 
   const toggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
   };
 
   // Reset to first page when filters change
-  const handleFilterChange = () => {
-    setCurrentPage(1);
-  };
-
-  const handleSearchChange = (value: string) => {
-    setSearchTerm(value);
-    handleFilterChange();
+  const handleFilterChange = async () => {
+    if (window.api && typeof window.api.getSessions === "function") {
+      try {
+        const sessions = await window.api.getSessions({
+          page: 1,
+          search: searchTerm || undefined,
+          from: dateFrom || null,
+          to: dateTo || null,
+        });
+        console.log("Fetched  in filter:", sessions);
+        setCurrentPage(1);
+        setSessions(sessions.sessions || []);
+        setTotalPages(sessions.totalPages || 1);
+      } catch (error) {
+        console.error("Error fetching sessions:", error);
+      }
+    }
   };
 
   const handleDateFromChange = (value: string) => {
     setDateFrom(value);
+
     handleFilterChange();
   };
 
@@ -81,19 +84,49 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
     handleFilterChange();
   };
 
-  const handlePageChange = (page: number) => {
+  const handlePageChange = async (page: number) => {
+    if (window.api && typeof window.api.getSessions === "function") {
+      try {
+        const sessions = await window.api.getSessions({
+          page,
+          search: searchTerm || undefined,
+          from: dateFrom || null,
+          to: dateTo || null,
+        });
+        console.log("Fetched sessions:", sessions);
+        setSessions(sessions.sessions || []);
+      } catch (error) {
+        console.error("Error fetching sessions:", error);
+      }
+    }
     setCurrentPage(page);
   };
 
-  const showQRCode = (sessionId: string) => {
-
-    /// TODO: fetch session data from ipc
-    setShowQRCode(true);
+  const showQRCode = (_sessionId: string) => {
+    if (!sessions) return;
+    if (window.api && typeof window.api.getSession === "function") {
+      window.api
+        .getSession(_sessionId)
+        .then((data) => {
+          if (!data.ok)
+            throw new Error( "Failed to fetch session data");
+          _setSessionData({
+            sessionName:
+              sessions.find((s) => s.id === _sessionId)?.name || "Unknown",
+            sessionId: data.sessionId,
+            serverUrl: data.serverUrl,
+          });
+          setShowQRCode(true);
+        })
+        .catch((error) => {
+          console.error("Error fetching session data for QR code:", error);
+        });
+    }
   };
 
   const getPaginationRange = () => {
     const range = [];
-    const maxVisible = 5;
+    const maxVisible = 7;
     let start = Math.max(1, currentPage - Math.floor(maxVisible / 2));
     let end = Math.min(totalPages, start + maxVisible - 1);
 
@@ -108,13 +141,29 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
   };
 
   useEffect(() => {
-    if (!showQR) return; // only add listener when modal is open
+    if (!showQR) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setShowQRCode(false);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [showQR]);
+
+  useEffect(() => {
+    const delay = 500;
+    const id = setTimeout(() => {
+      handleFilterChange();
+    }, delay);
+    return () => clearTimeout(id);
+  }, [searchTerm, dateFrom, dateTo]);
+
+  // safe date formatter
+  const formatDate = (v?: string | Date | null) => {
+    if (!v) return "N/A";
+    const d = v instanceof Date ? v : new Date(String(v));
+    if (isNaN(d.getTime())) return "Invalid date";
+    return d.toLocaleDateString();
+  };
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-6 mb-6 ">
@@ -133,7 +182,7 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
             type="text"
             placeholder="Search by session name..."
             value={searchTerm}
-            onChange={(e) => handleSearchChange(e.target.value)}
+            onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 outline-none transition-all"
           />
         </div>
@@ -165,14 +214,6 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
         </div>
       </div>
 
-      {/* Results Summary */}
-      <div className="mb-4">
-        <p className="text-sm text-gray-600">
-          Showing {paginatedSessions.length} of {filteredSessions.length}{" "}
-          sessions
-        </p>
-      </div>
-
       {/* Table */}
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
@@ -190,7 +231,7 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
             </tr>
           </thead>
           <tbody>
-            {paginatedSessions.map((session, index) => (
+            {sessions.map((session, index) => (
               <tr
                 key={session.id}
                 onClick={() => onSessionClick(session.id)}
@@ -199,10 +240,10 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
                 }`}
               >
                 <td className="border border-gray-300 px-4 py-3 text-gray-700 font-medium">
-                  {session.sessionName}
+                  {session.name}
                 </td>
                 <td className="border border-gray-300 px-4 py-3 text-gray-700">
-                  {new Date(session.date).toLocaleDateString()}
+                  {formatDate(session.createdAt)}
                 </td>
                 <td className="border border-gray-300 px-4 py-3 text-gray-700">
                   <button
@@ -222,7 +263,7 @@ export default function SessionTable({ sessions, onSessionClick }: Props) {
       </div>
 
       {/* No Results Message */}
-      {filteredSessions.length === 0 && (
+      {sessions.length === 0 && (
         <div className="text-center py-8 text-gray-500">
           {sessions.length === 0
             ? "No sessions available"

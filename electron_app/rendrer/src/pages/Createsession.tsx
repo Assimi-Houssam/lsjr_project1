@@ -14,24 +14,23 @@ const CreateSession: React.FC = () => {
 
   const handleCreateSession = (sessionName: string) => {
     // Generate a unique session ID (in real app, this would come from the API)
-    const sessionId = `session_${Date.now()}_${Math.random()
-      .toString(36)
-      .substr(2, 9)}`;
-
-    setSessionData({ sessionName, sessionId, serverUrl: 'http://127.0.0.1:3000' });
-    setShowQRCode(true);
 
     // TODO: Send data to electron service
-    if(window.lsjr && typeof window.lsjr.createSession === 'function') {
-      window.lsjr.createSession(sessionName).then((response) => {
+    if (window.api && typeof window.api.createSession === "function") {
+      window.api.createSession(sessionName).then((response) => {
+        console.log("response", response);
+        setShowQRCode(true);
         setSessionData({
           sessionName,
           sessionId: response.sessionId,
           serverUrl: response.serverUrl,
         });
+      }).catch((error) => {
+        console.error("Error creating session:", error);
+        alert("Failed to create session. Please try again.");
       });
     }
-  }
+  };
 
   const toggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
@@ -60,7 +59,9 @@ const CreateSession: React.FC = () => {
           {/* Header */}
           {!isFullscreen && (
             <div className="bg-orange-400 px-6 py-4">
-            <h1 className="text-2xl font-bold text-white text-center">Créer une session</h1>
+              <h1 className="text-2xl font-bold text-white text-center">
+                Créer une session
+              </h1>
             </div>
           )}
 
@@ -81,6 +82,5 @@ const CreateSession: React.FC = () => {
     </div>
   );
 };
-
 
 export default CreateSession;

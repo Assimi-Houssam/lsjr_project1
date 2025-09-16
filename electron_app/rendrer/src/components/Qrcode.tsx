@@ -20,7 +20,7 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
         const QRCode = (await import("qrcode")).default;
 
         // Create the link data for the QR code
-        const qrData = `${sessionData.serverUrl}/${encodeURIComponent(sessionData.sessionId)}`;
+        const qrData = `${sessionData.serverUrl}/?sessionId=${encodeURIComponent(sessionData.sessionId)}`;
 
         const dataUrl = await QRCode.toDataURL(qrData, {
           width: isFullscreen ? 400 : 300,
