@@ -174,7 +174,7 @@ ipcMain.handle("create-session", async (ev, sessionName) => {
   return { sessionId, name: sessionName, serverUrl };
 });
 
-// add pagination  exclude the participant for now
+// for reutning qr code data for a specific session
 ipcMain.handle("session-qr", async (ev, sessionId) => {
   if (!prisma) return { ok: false, error: "no DB" };
   if (!serverUrl) return { ok: false, error: "server not started" };
@@ -184,6 +184,8 @@ ipcMain.handle("session-qr", async (ev, sessionId) => {
 });
 
 
+
+// get all sessions with pagination and optional search and date filter
 ipcMain.handle("get-sessions", async (ev, opt = {}) => {
   const { page = 1, pageSize = 7, search, to, from } = opt;
   const searchTerm =
@@ -209,6 +211,8 @@ ipcMain.handle("get-sessions", async (ev, opt = {}) => {
   return { sessions, totalPages };
 });
 
+
+// get all participants for a specific session
 ipcMain.handle("get-participants", async (ev, sessionId) => {
   if (!prisma) return [];
   try {
