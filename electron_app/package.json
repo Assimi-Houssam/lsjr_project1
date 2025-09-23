@@ -1,7 +1,7 @@
 {
   "name": "electron_app",
   "version": "1.0.0",
-  "description": "",
+  "description": "LocalQuizHub electron desktop app",
   "license": "ISC",
   "author": "",
   "type": "commonjs",
@@ -9,17 +9,92 @@
   "scripts": {
     "start": "electron .",
     "build:all": "npm --prefix ./rendrer run build && npm run start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "predist": "bash -c 'rm -rf ./quiz/dist && mkdir -p ./quiz && cp -r ../quiz/dist ./quiz/dist || true' && npm run copy-prisma && npm run generate-prisma && npm run ensure-db-schema",
+    "copy-prisma": "bash -c 'mkdir -p ./prisma-binaries && cp -r ./node_modules/@prisma/engines/* ./prisma-binaries/ || true'",
+    "generate-prisma": "prisma generate",
+    "ensure-db-schema": "bash -c 'if [ ! -f ./prisma/dev.db ]; then touch ./prisma/dev.db && npx prisma db push --force-reset; fi'",
+    "dist": "npm --prefix ./rendrer run build && npm run predist && electron-builder --win --x64 --publish never"
   },
   "devDependencies": {
-    "electron": "^38.0.0"
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.12"
   },
   "dependencies": {
     "@prisma/client": "^6.15.0",
+    "@prisma/engines-version": "^6.17.0-6.7094b62bbd6bbc778403e89cdbcbfe598503ed9b",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "node-cron": "^4.2.1",
     "node-fetch": "^3.3.2",
     "prisma": "^6.15.0"
+  },
+  "build": {
+    "appId": "com.localquizhub.app",
+    "productName": "LocalQuizHub",
+    "files": [
+      "**/*",
+      "!dist",
+      "!*.log",
+      "!node_modules/@prisma/engines/src/**",
+      "!node_modules/@prisma/engines/download/**"
+    ],
+    "extraFiles": [
+      {
+        "from": "prisma",
+        "to": "prisma",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "quiz",
+        "to": "quiz",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "node_modules/.prisma",
+        "to": "app.asar.unpacked/node_modules/.prisma",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "node_modules/@prisma/client",
+        "to": "app.asar.unpacked/node_modules/@prisma/client",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "asarUnpack": [
+      "node_modules/@prisma/**/*",
+      "node_modules/.prisma/**/*",
+      "prisma/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "zip",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/logo.ico",
+      "extraResources": [
+        {
+          "from": "node_modules/@prisma/engines",
+          "to": "app.asar.unpacked/node_modules/@prisma/engines",
+          "filter": [
+            "**/*.exe",
+            "**/*.dll.node"
+          ]
+        }
+      ]
+    }
   }
 }
