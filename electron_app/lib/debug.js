@@ -40,4 +40,8 @@ function clearDebugLogs() {
   return true;
 }
 
-module.exports = { debugLog, getDebugLogs, clearDebugLogs };
+module.exports = {
+  debugLog,
+  getDebugLogs,
+  clearDebugLogs,
+};

@@ -1,28 +1,33 @@
 const { app } = require("electron");
 const path = require("path");
 
-// Database path configuration - PORTABLE VERSION
-const dbPath = app.isPackaged
-  ? path.join(path.dirname(process.execPath), "data", "app.db")
-  : path.join(__dirname, "..", "prisma", "dev.db");
+function getPaths() {
+  // Configuration
+  const HTTP_PORT = Number(process.env.LOCAL_HTTP_PORT || 3000);
+  const HOST = "0.0.0.0";
 
-// Quiz and Admin paths
-const QUIZ_DIST = app.isPackaged
-  ? path.join(path.dirname(process.execPath), "quiz", "dist")
-  : path.join(__dirname, "..", "quiz", "dist");
+  // Fix paths for packaged app
+  const QUIZ_DIST = app.isPackaged
+    ? path.join(path.dirname(process.execPath), "quiz", "dist")
+    : path.join(__dirname, "..", "quiz", "dist");
 
-const ADMIN_DIST = app.isPackaged
-  ? path.join(__dirname, "..", "rendrer", "dist")
-  : path.join(__dirname, "..", "rendrer", "dist");
+  const ADMIN_DIST = app.isPackaged
+    ? path.join(__dirname, "..", "rendrer", "dist")
+    : path.join(__dirname, "..", "rendrer", "dist");
 
-// Assets
-const ICON_DIR = path.join(__dirname, "..", "assets");
-const ICON_PNG = path.join(ICON_DIR, "logo.png");
+  const ASSETS_DIR = path.join(__dirname, "..", "assets");
+  const PRELOAD_PATH = path.join(__dirname, "..", "preload.js");
+
+  return {
+    HTTP_PORT,
+    HOST,
+    QUIZ_DIST,
+    ADMIN_DIST,
+    ASSETS_DIR,
+    PRELOAD_PATH,
+  };
+}
 
 module.exports = {
-  dbPath,
-  QUIZ_DIST,
-  ADMIN_DIST,
-  ICON_DIR,
-  ICON_PNG,
+  getPaths,
 };
