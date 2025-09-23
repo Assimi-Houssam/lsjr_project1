@@ -3,7 +3,7 @@ import Regles from "../pages/Regles";
 import Define from "../pages/Define";
 import { choices_ar , choices_fr } from "../utils/Corected1";
 
-import { titles } from "../utils/titles";
+import { titles_ar , titles_fr } from "../utils/titles";
 
 export type Answer = boolean | null;
 
@@ -19,6 +19,7 @@ export interface define {
 function Quiz( { langue }: { langue: string }) {
   const [finished ,setfinished] = useState(false);
   const choice = langue === 'ar' ? choices_ar :  choices_fr ;
+  const titles = langue === 'ar' ? titles_ar :  titles_fr ;
   const QUESTIONS_PER_RULE1 = [4, 14, 4,6,9,6,7,8,4,6];
   const QUESTIONS_PER_RULE = [4];
   // initialize with `null` (unanswered). each sub-array can have different length.

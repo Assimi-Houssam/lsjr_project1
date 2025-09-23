@@ -41,25 +41,31 @@ import r6q1 from "/src/assets/r6q1.png";
 import r6q2 from "/src/assets/r6q2.png";
 import r6q3 from "/src/assets/r6q3.png";
 import r6q4 from "/src/assets/r6q4.png";
-import r6q5 from "/src/assets/r6q5.png"
-import r6q6 from "/src/assets/r6q6.png"
-import r7q1 from "/src/assets/r7q1.png"
-import r7q2 from "/src/assets/r7q2.png"
-import r7q3 from "/src/assets/r7q3.png"
-import r7q4 from "/src/assets/r7q4.png"
-import r7q5 from "/src/assets/r7q5.png"
-import r7q6 from "/src/assets/r7q6.png"
-import r7q7 from "/src/assets/r7q7.png"
-import r8q1 from "/src/assets/r8q1.png"
-import r8q2 from "/src/assets/r8q2.png"
-import r8q3 from "/src/assets/r8q3.png"
-import r8q4 from "/src/assets/r8q4.png"
-import r8q5 from "/src/assets/r8q5.png"
-import r8q6 from "/src/assets/r8q6.png"
-
-
-
-
+import r6q5 from "/src/assets/r6q5.png";
+import r6q6 from "/src/assets/r6q6.png";
+import r7q1 from "/src/assets/r7q1.png";
+import r7q2 from "/src/assets/r7q2.png";
+import r7q3 from "/src/assets/r7q3.png";
+import r7q4 from "/src/assets/r7q4.png";
+import r7q5 from "/src/assets/r7q5.png";
+import r7q6 from "/src/assets/r7q6.png";
+import r7q7 from "/src/assets/r7q7.png";
+import r8q1 from "/src/assets/r8q1.png";
+import r8q2 from "/src/assets/r8q2.png";
+import r8q3 from "/src/assets/r8q3.png";
+import r8q4 from "/src/assets/r8q4.png";
+import r8q5 from "/src/assets/r8q5.png";
+import r8q6 from "/src/assets/r8q6.png";
+import r9q1 from "/src/assets/r9q1.png";
+import r9q2 from "/src/assets/r9q2.png";
+import r9q3 from "/src/assets/r9q3.png";
+import r9q4 from "/src/assets/r9q4.png";
+import r10q1 from "/src/assets/r10q1.png";
+import r10q2 from "/src/assets/r10q2.png";
+import r10q3 from "/src/assets/r10q3.png";
+import r10q4 from "/src/assets/r10q4.png";
+import r10q5 from "/src/assets/r10q5.png";
+import r10q6 from "/src/assets/r10q6.png";
 
 export const choices_ar = [
   // regle 1
@@ -78,8 +84,8 @@ export const choices_ar = [
       questionNumber: 2,
       imageUrl: r1q2,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
       ],
     },
     {
@@ -87,8 +93,8 @@ export const choices_ar = [
       questionNumber: 3,
       imageUrl: r1q3,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
       ],
     },
     {
@@ -108,8 +114,8 @@ export const choices_ar = [
       questionNumber: 1,
       imageUrl: r2q1,
       choice: [
-        { id: "a", text: "متر 1.5", isCorrect: true },
-        { id: "b", text: "متر 1.8", isCorrect: false },
+        { id: "a", text: "متر 1.5", isCorrect: false },
+        { id: "b", text: "متر 1.8", isCorrect: true },
         { id: "c", text: "متر 2.0.", isCorrect: false },
         { id: "d", text: "متر 3.0", isCorrect: false },
       ],
@@ -130,11 +136,11 @@ export const choices_ar = [
       questionNumber: 3,
       imageUrl: r2q3,
       choice: [
-        { id: "a", text: "نعم، إذا انتبهت", isCorrect: true },
+        { id: "a", text: "نعم، إذا انتبهت", isCorrect: false },
         {
           id: "b",
           text: "لا،أحتاج إلى الحصول على تصريه و تنفيد تحليل الاخطار و المحين",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -171,11 +177,11 @@ export const choices_ar = [
       questionNumber: 6,
       imageUrl: r2q6,
       choice: [
-        { id: "a", text: "نعم، بدون أي مشكلة", isCorrect: true },
+        { id: "a", text: "نعم، بدون أي مشكلة", isCorrect: false },
         {
           id: "b",
           text: "لا، يجب أن أستخدم نقاط الإرساء المحددة مسبقا و المتعمدة فقط",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -215,11 +221,11 @@ export const choices_ar = [
       questionNumber: 9,
       imageUrl: r2q9,
       choice: [
-        { id: "a", text: "نعم، بدوي أي مشكلة", isCorrect: true },
+        { id: "a", text: "نعم، بدوي أي مشكلة", isCorrect: false },
         {
           id: "b",
           text: "لا، هذا غير مسموحبه، لأنني لست مجهزا بمعدات العمل الخاصة",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -232,12 +238,12 @@ export const choices_ar = [
         {
           id: "a",
           text: "يجب ربط حزام الامان فقط عندما تتحرك منصة الرفع الشخصي /المرتفعة ذاتيا ",
-          isCorrect: true,
+          isCorrect: false,
         },
         {
           id: "b",
           text: "يجب أن تكون دائما مرتبطا، طوال الوقت ",
-          isCorrect: false,
+          isCorrect: true,
         },
         {
           id: "c",
@@ -252,11 +258,11 @@ export const choices_ar = [
       questionNumber: 11,
       imageUrl: r2q11,
       choice: [
-        { id: "a", text: "نعم", isCorrect: true },
+        { id: "a", text: "نعم", isCorrect: false },
         {
           id: "b",
           text: "لا، يجب أن يكون لدي دائما 3 نقاد اتصال علي الأقل",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -266,11 +272,11 @@ export const choices_ar = [
       questionNumber: 12,
       imageUrl: r2q12,
       choice: [
-        { id: "a", text: "نعم", isCorrect: true },
+        { id: "a", text: "نعم", isCorrect: false },
         {
           id: "b",
           text: "لا. أحتاج إلى حبل مزدوج ويجب أن أبقى متبتا دائما في نقطة تثبيت مناسبة",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -305,8 +311,8 @@ export const choices_ar = [
       questionNumber: 1,
       imageUrl: r3q1,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم، يتم احترام المتطلبات", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم، يتم احترام المتطلبات", isCorrect: true },
       ],
     },
     {
@@ -327,11 +333,11 @@ export const choices_ar = [
       questionNumber: 3,
       imageUrl: r3q3,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
+        { id: "a", text: "لا", isCorrect: false },
         {
           id: "b",
           text: "نعم، يتم احترام المراحل الثلاث للعملية",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -353,8 +359,8 @@ export const choices_ar = [
       questionNumber: 1,
       imageUrl: r4q1,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
       ],
     },
     {
@@ -366,9 +372,9 @@ export const choices_ar = [
         {
           id: "a",
           text: "وتيقة بعنوان شهادة التدريب في لأماكن الضيقة",
-          isCorrect: true,
+          isCorrect: false,
         },
-        { id: "b", text: "وتيقة بعنوان تصريح عمل", isCorrect: false },
+        { id: "b", text: "وتيقة بعنوان تصريح عمل", isCorrect: true },
         { id: "c", text: "كلاهما", isCorrect: false },
       ],
     },
@@ -377,11 +383,11 @@ export const choices_ar = [
       questionNumber: 3,
       imageUrl: r4q3,
       choice: [
-        { id: "a", text: "نعم", isCorrect: true },
+        { id: "a", text: "نعم", isCorrect: false },
         {
           id: "b",
           text: "لا، لأن صمام تهوية غير مغلق في وضع الفتح ولست مجهزا بحزام",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -393,7 +399,7 @@ export const choices_ar = [
         {
           id: "a",
           text: "نعم، تم فحص الغلاف الجوي من قبل رجل إطفاء قبل بدء العمل.لذلك، لا بأس، لا حاجة لأجهزة الكشف عن الغاز الفردية يمكنك إقاف تشغلها،فهي اختيرية",
-          isCorrect: true,
+          isCorrect: false,
         },
         {
           id: "b",
@@ -403,7 +409,7 @@ export const choices_ar = [
         {
           id: "c",
           text: "لا،يجب على الشخص الذي لديه محلل الغاز المغق أو المعطل التوقف عن العمل ومغدرة المكان المحصور،أجهزة الكشف عن الغاز الفردية إلزامية و يجب أن تعمل دائما من لحضة دخولك إلى مكان ضيق",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -415,7 +421,7 @@ export const choices_ar = [
         {
           id: "a",
           text: "يجب علي الشخص الذي يصدر التصفير إعادة ضبط الكاشف الخاص به، فمن المحتمل أن يكون إندارا كاذبا",
-          isCorrect: true,
+          isCorrect: false,
         },
         {
           id: "b",
@@ -430,7 +436,7 @@ export const choices_ar = [
         {
           id: "d",
           text: "يجب علي كلاهما التوقف و الإخلاء. هناك خطأ ما، و يمكن أ يتدهور بسرعة كبيرة",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -439,7 +445,7 @@ export const choices_ar = [
       questionNumber: 6,
       imageUrl: r4q6,
       choice: [
-        { id: "a", text: "يجب أ يذهب لإنقاذ الشخص الجامد", isCorrect: true },
+        { id: "a", text: "يجب أ يذهب لإنقاذ الشخص الجامد", isCorrect: false },
         {
           id: "b",
           text: "يمكنه الدخول جهاز الكشف عن الغاز، ويحاول إنقاذ الشخص",
@@ -448,7 +454,7 @@ export const choices_ar = [
         {
           id: "c",
           text: "يجب ألا يخل المكان الضيق،الذي قد يكون ملوثا،ولكن يجب تنبيه خدمات لإنقاذ على الفور،يمكن فقط لأشخاص الذين لديهم أجهزة تنفسية مستقلة",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -469,8 +475,8 @@ export const choices_ar = [
       questionNumber: 2,
       imageUrl: r5q2,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
       ],
     },
     {
@@ -496,8 +502,8 @@ export const choices_ar = [
       questionNumber: 5,
       imageUrl: r5q5,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
       ],
     },
     {
@@ -517,12 +523,12 @@ export const choices_ar = [
         {
           id: "a",
           text: "نعم، الحمولة لا تزال على الأرض و بالتالي فإن مخروط الأمان (المسافة) هو صفر",
-          isCorrect: true,
+          isCorrect: false,
         },
         {
           id: "b",
           text: "لا،الشخص الموجود علي الأرض قريب جدا، فهو بحاجة الابتعاد قبل أي حركة للرافعة",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -535,12 +541,12 @@ export const choices_ar = [
         {
           id: "a",
           text: "نعم الحمولة موجودة بالفعل على الأرض، وبالتالي فإن مخرود الأمان (المسافة) هو صفر",
-          isCorrect: true,
+          isCorrect: false,
         },
         {
           id: "b",
           text: "لا،لا تزال الرافعات تحت اكصد، ويمكن أن تكسر أو لا يزال الحمل يتحرك بصكل غير متوقع",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -552,12 +558,12 @@ export const choices_ar = [
         {
           id: "a",
           text: "لا، بالنسبة لأنشطة الرفع البسيطة، يمكن لأي شخص لديه حس سليم القيام بذلك",
-          isCorrect: true,
+          isCorrect: false,
         },
         {
           id: "b",
           text: "نعم",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -618,8 +624,8 @@ export const choices_ar = [
       questionNumber: 6,
       imageUrl: r6q6,
       choice: [
-        { id: "a", text: "لا،لايتم احترام القاعدة", isCorrect: true },
-        { id: "b", text: "نعم، يتم احترام القاعدة", isCorrect: false },
+        { id: "a", text: "لا،لايتم احترام القاعدة", isCorrect: false },
+        { id: "b", text: "نعم، يتم احترام القاعدة", isCorrect: true },
       ],
     },
   ],
@@ -630,8 +636,8 @@ export const choices_ar = [
       questionNumber: 1,
       imageUrl: r7q1,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
       ],
     },
 
@@ -653,25 +659,25 @@ export const choices_ar = [
       ],
     },
     {
-      title: "نعم، يتم احترام القاعدة",
+      title: "هل، يتم احترام القاعدة",
       questionNumber: 3,
       imageUrl: r7q3,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
       ],
     },
     {
-      title: "نعم، يتم احترام القاعدة",
+      title: "هل، يتم احترام القاعدة",
       questionNumber: 4,
       imageUrl: r7q4,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
       ],
     },
     {
-      title: "نعم، يتم احترام القاعدة",
+      title: "هل، يتم احترام القاعدة",
       questionNumber: 5,
       imageUrl: r7q5,
       choice: [
@@ -680,16 +686,16 @@ export const choices_ar = [
       ],
     },
     {
-      title: "نعم، يتم احترام القاعدة",
+      title: "هل، يتم احترام القاعدة",
       questionNumber: 6,
       imageUrl: r7q6,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
       ],
     },
     {
-      title: "نعم، يتم احترام القاعدة",
+      title: "هل، يتم احترام القاعدة",
       questionNumber: 7,
       imageUrl: r7q7,
       choice: [
@@ -705,64 +711,59 @@ export const choices_ar = [
       questionNumber: 1,
       imageUrl: r8q1,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
       ],
     },
     {
-      title: "",
+      title:
+        "هل يمثل هذا الموقف خطر الغاز أو خطر الانفجار؟ موقع تحويل الغاز وتخزينه",
       questionNumber: 2,
       imageUrl: r8q2,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
         ,
       ],
     },
     {
-      title: "",
-      questionNumber: 2,
-      imageUrl: r8q2,
-      choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
-        ,
-      ],
-    },
-    {
-      title: "",
-      questionNumber: 2,
-      imageUrl: r8q2,
-      choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
-        ,
-      ],
-    },
-    {
-      title: "",
+      title:
+        "هل يمثل هذا الموقف خطر الغاز أو خطر الانفجار؟ (موقع تحويل الوقود وتخزينه",
       questionNumber: 3,
       imageUrl: r8q3,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
         ,
       ],
     },
     {
-      title: "",
+      title:
+        "هل يمثل هذا الموقف خطر الغاز أو خطر الانفجار؟ (وحدة إنتاج الأكسجين)",
       questionNumber: 4,
       imageUrl: r8q4,
       choice: [
-        { id: "a", text: "لا", isCorrect: true },
-        { id: "b", text: "نعم", isCorrect: false },
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
         ,
       ],
     },
     {
-      title: "",
+      title:
+        "هل يمثل استخدام مذيب في بيئة أو مساحة مغلقة خطر الغاز أو خطر الانفجار؟",
       questionNumber: 5,
       imageUrl: r8q5,
+      choice: [
+        { id: "a", text: "لا", isCorrect: false },
+        { id: "b", text: "نعم", isCorrect: true },
+        ,
+      ],
+    },
+    {
+      title:
+        "هل يمكن للشخص المجهز بجهاز التنفس الصناعي المستقل الدخول إلى منطقة الغاز الخطير؟",
+      questionNumber: 6,
+      imageUrl: r8q6,
       choice: [
         { id: "a", text: "لا", isCorrect: true },
         { id: "b", text: "نعم", isCorrect: false },
@@ -770,29 +771,215 @@ export const choices_ar = [
       ],
     },
     {
-      title: "",
+      title: "هل يمكنني أنا وزملائي بدء العمل أو الاستمرار فيه؟",
+      questionNumber: 5,
+      imageUrl: r8q5,
+      choice: [
+        {
+          id: "a",
+          text: "نعم، تم فحص الغلاف الجوي من قبل رجل إطفاء قبل بدء العمل، لذلك لا بأس، لا حاجة لكاشف الغاز الفردي. يمكنك إيقاف تشغيله، إنه اختياري",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "نعم، طالما أن أحد الزملاء لديه على الأقل محلل غاز شخصي يعمل بشكل صحيح ويتم تشغيله، فهذا يكفي",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "لا، يجب على الشخص الذي لديه محلل الغاز المغلق أو المعطل إيقاف العمل والخروج من المكان الضيق؛ أجهزة الكشف عن الغاز الفردية إلزامية ويجب أن تعمل طوال الوقت بمجرد أن تعمل داخل مكان ضيق",
+          isCorrect: true,
+        },
+        ,
+      ],
+    },
+    {
+      title: "ماذا يجب أن أفعل أنا وزميلي؟",
       questionNumber: 6,
       imageUrl: r8q6,
+      choice: [
+        {
+          id: "a",
+          text: "محلل الزميل يصدر صوتا، لذا يجب عليه إعادة ضبط كاشفه، ربما إنذار خاطئ",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "نبقى قريبين من بعضنا البعض للتحقق مما إذا كان الكاشف الخاص بي يبدأ أيضا في إصدار صوت تنبيه",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "يجب على زميلي التوقف عن العمل والابتعاد نحوي، ثم إعادة ضبط الكاشف الخاص به، ثم العودة إلى مهمته فقط إذا بدأ الصوت في التصفير مرة أخرى، فعليه التوقف وإخلاء المكان",
+          isCorrect: false,
+        },
+        {
+          id: "d",
+          text: "يجب على كلينا التوقف والإخلاء. هناك خطأ ما، ويمكن أن يتدهور بسرعة كبيرة",
+          isCorrect: true,
+        },
+      ],
+    },
+  ],
+  [
+    {
+      title:
+        "إذا اضطررت للتدخل هل يمكنني إزالة الحماية السياج، الغطاء،... إلخ) ؟",
+      questionNumber: 1,
+      imageUrl: r9q1,
+      choice: [
+        {
+          id: "a",
+          text: "، نعم، دون أي مشكلة، لأنني ماهر بما يكفي لتجنب الإصابة",
+          isCorrect: true,
+        },
+        {
+          id: "b",
+          text: "نعم، إذا كان لدي تفويض من المشرف الخاص بي",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: ". وقمت بوضع القفل على قاطع الدائرة الكهربائية أو صندوق القفل (العزل)LOTOTO نعم، إذا تم تطبييق",
+          isCorrect: false,
+        },
+        {
+          id: "d",
+          text: ".HIRA Lite محدد بمشاركة خبراء محليين وتم الالتزام بجميع عناصر التحكم الموضحة في HIRA Lite نعم، إذا تم إجراء اختبار",
+          isCorrect: false,
+        },
+        {
+          id: "f",
+          text: "فقط، إذا كانت العبارتان الأخيرتان السابقتان صحيحتين",
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      title:
+        "هل أحتاج إلى إعادة الحماية (الغطاء، السياج .... إلخ) بمجرد الانتهاء من أعمال الإصلاح الخاصة بي على الجهاز؟",
+      questionNumber: 2,
+      imageUrl: r9q2,
+      choice: [
+        { id: "a", text: "نعم، دائما", isCorrect: true },
+        { id: "b", text: "لاء سيتم ذلك من قبل مديري", isCorrect: false },
+        {
+          id: "c",
+          text: "زميلي من المناوبة التالية سيعيدها",
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      title: "أرى غطاء/حماية مفقودة أو مفككة على المعدات قيد التشغيل",
+      questionNumber: 3,
+      imageUrl: r9q3,
+      choice: [
+        { id: "a", text: "لا يهمني، هذا ليس واجبي", isCorrect: true },
+        { id: "b", text: "سأبلغ المدير المشرف على الفور", isCorrect: false },
+      ],
+    },
+    {
+      title:
+        "هل يمكنني استخدام إيقاف الطوارئ (الزر الخط) لإيقاف الإنتاج واستخدامه ؟",
+      questionNumber: 4,
+      imageUrl: r9q4,
+      choice: [
+        { id: "a", text: "نعم، يكفي العمل بأمان", isCorrect: true },
+        {
+          id: "b",
+          text: "لا، أبدا، الغرض الوحيد منه هو حالات الطوارئ",
+          isCorrect: false,
+        },
+      ],
+    },
+  ],
+  [
+    {
+      title: "إذا كنت سأقوم بنشاط",
+      questionNumber: 1,
+      imageUrl: r10q1,
+      choice: [
+        {
+          id: "a",
+          text: "أحتاج فقط إلى تعليمات شفهية لأنني أعرف وأستطيع القيام بهذه المهمة",
+          isCorrect: true,
+        },
+        {
+          id: "b",
+          text: "لفهم المخاطر التي ينطوي عليها النشاط وتطبيق الضوابط اللازمة HIRA Lite و SOP قبل أن أبدا المهمه، أحتاج إلى مراجعة",
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      title: "...عندما تكون هناك حاجة إلى تصريح عمل",
+      questionNumber: 2,
+      imageUrl: r10q2,
+      choice: [
+        {
+          id: "a",
+          text: "أذهب إلى مكتب المشرف الخاص بي، وهو يوقع تصريح العمل الذي أحتاجه",
+          isCorrect: true,
+        },
+        {
+          id: "b",
+          text: "قبل بدء العمل، يقوم الفريق المعني بالمشرف بإجراء تقييم مفصل للمخاطر، والتأكد من مراجعة تصريح العمل، والتأكد من أن جميع الضوابط موجوده، والتأكد من أن تصريح العمل مصرح به في الموقع حيث سيتم تنفيذ العمل HIRA التي تم النظر فيها في",
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      title: "إذا كان هناك شيء غير واضح قبل النشاط أو أثناءه...",
+      questionNumber: 3,
+      imageUrl: r10q3,
+      choice: [
+        {
+          id: "a",
+          text: " أستخدم خبرتي السابقة وأواصل العمل، لأن المهمة تحتاج إلى إنجاز",
+          isCorrect: true,
+        },
+        {
+          id: "b",
+          text: "أواصل العمل لأن لدي بالفعل خطة سابقة",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "وتعديل الضوابط للتخفيف من المخاطر الجديدة المحددة. إذا لزم الأمر، أطلب من ، HIRA Lite) أقوم بإيقاف النشاط وإعادة تقييم المخاطر (HIRA Lite) وتعديل الضوابط للتخفيف من المخاطر الجديدة المحددة. إذا لزم الأمر، أطلب من المشرف اتخاذ القرار الأفضل",
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      title: "عندما يكون نشاطا حرجًا، أتواصل بوضوح وأستخدم الاتصال ثلاثي الاتجاهات",
+      questionNumber: 4,
+      imageUrl: r10q4,
+      choice: [
+        { id: "a", text: "إذا كنت سأقوم بمناورة باستخدام رافعة، فأنا ببساطة أشير إلى مشغل الرافعة للإشارة إلى الإجراء الذي يجب اتخلاه، مع التأكد من أنه تبعني", isCorrect: true },
+        { id: "b", text: "Crane إذا كنت سأشير إلى مشغل رافعة لإجراء مناوره، فإنني أستخدم الاتصال ثلاثي الاتجاه، على سبيل المثال أنا، «اقلب الطفره إلى اليمين»؛ . هل تريد مني تحويل الطفرة إلى اليمين؟» ؛ أنا: «نعم، هذا صحيح، أدر الطفره إلى اليمين» :.Op", isCorrect: false },
+      ],
+    },
+    {
+      title: "هل تم ممارسة قاعدة اليقظة المشتركة؟",
+      questionNumber: 5,
+      imageUrl: r10q5,
+      choice: [
+        { id: "a", text: "نعم، كم الامتثال للقاعدة وتم تحديد جميع المخاطر وتقييم جميع المخاطر في البيئة", isCorrect: true },
+        { id: "b", text: "لا، لا يتم اتباع القاعدة، ولا أحد يطبق اليقظة المشتركة", isCorrect: false },
+      ],
+    },
+    {
+      title:
+        "عندما ألاحظ أن زميلا في العمل يكسر القاعدة الذهبية التي تنقذ الأرواح...",
+      questionNumber: 6,
+      imageUrl: r10q6,
       choice: [
         { id: "a", text: "", isCorrect: true },
         { id: "b", text: "", isCorrect: false },
       ],
     },
   ],
-  // {
-  //   title: "",
-  //   questionNumber: 1,
-  //   imageUrl: r8q1,
-  //   choice: [
-  //     { id: "a", text: "", isCorrect: true },
-  //     { id: "b", text: "", isCorrect: false },
-  //   ],
-  // },
 ];
-
-
-
-
-
 
 export const choices_fr = [];
