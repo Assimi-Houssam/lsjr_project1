@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type Motif = "" | "Absence" | "Retard" | "Maladie";
+type Motif = "" | "motif1" | "motif2" | "motif3";
 
 interface DefineData {
   name: string;
@@ -21,7 +21,7 @@ export default function Define({ onStart }: Props) {
     motif: "",
   });
 
-  const motifOptions: Motif[] = ["", "Absence", "Retard", "Maladie"];
+  const motifOptions: Motif[] = ["", "motif1", "motif2", "motif3"];
 
   const update = (k: keyof DefineData, v: string) => {
     setForm((s) => ({ ...s, [k]: v }));

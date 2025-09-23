@@ -27,7 +27,7 @@ interface Props {
   choices: Choices;
   title: string;
   regleIndex?: number;
-  onRuleComplete?: (success: boolean) => void;
+  onRuleComplete?: (success: boolean, updatedRules: Answer[][]) => void;
 }
 
 export default function Regles({
@@ -80,14 +80,14 @@ export default function Regles({
 
       if (allCorrect) {
         // All correct - move to next rule
-        console.log("All answers correct! Well done!");
+        console.log("[All correct, moving to next rule]");
         setIsRetryPhase(false);
         setWrongAnswers([]);
         setRetryCount(0);
         setCurrentRetryIndex(0);
         setShowFailureMessage(false);
         setCurrentQuestionIndex(0);
-        onRuleComplete?.(true);
+        onRuleComplete?.(true, updatedRules);
       } else {
         // There are wrong answers
         if (!isRetryPhase) {
@@ -123,7 +123,7 @@ export default function Regles({
               setRetryCount(0);
               setCurrentRetryIndex(0);
               console.log("Final result after retries", finalAllCorrect);
-              onRuleComplete?.(finalAllCorrect);
+              onRuleComplete?.(finalAllCorrect, updatedRules);
             }
           }
         }

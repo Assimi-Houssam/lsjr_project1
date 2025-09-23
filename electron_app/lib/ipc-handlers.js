@@ -74,16 +74,17 @@ function setupIpcHandlers() {
     }
     try {
       const session = await prisma.session.findUnique({
-        where: { sessionid: sessionId },
+        where: { sessionId: sessionId },
       });
       if (!session) {
         throw new Error("Session not found");
       }
-      const qrData = `${getServerUrl()}/?sessionId=${sessionId}`;
+      const serverurl = getServerUrl();
+      debugLog("info", "Session URL:", `${serverurl}/?sessionId=${sessionId}`);
       return {
-        session,
-        qrData,
-        serverUrl: getServerUrl(),
+        ok : true,
+        sessionId : sessionId,
+        serverUrl : serverurl,
       };
     } catch (error) {
       console.error("❌ Error getting session QR:", error);
@@ -133,35 +134,49 @@ function setupIpcHandlers() {
   // Get participants for a specific session
   ipcMain.handle("get-participants", async (ev, sessionId) => {
     const prisma = getPrisma();
-    if (!prisma) {
-      throw new Error("Database not available");
-    }
-    try {
-      console.log("Getting participants for session:", sessionId);
-
-      const participants = await prisma.participant.findMany({
-        where: {
-          session: {
-            sessionId: sessionId,
-          },
-        },
-        include: {
-          session: true,
-        },
-        orderBy: {
-          createdAt: "desc",
-        },
-      });
-      return participants;
-    } catch (error) {
-      throw error;
-    }
-  });
+  if (!prisma) return [];
+  try {
+    const session = await prisma.session.findUnique({
+      where: { sessionId : sessionId },
+      include: { participants: { include: { results: true } } },
+    });
+    if (!session) return [];
+    const participants = session.participants.map((p) => ({
+      id: p.id,
+      name: p.name,
+      company: p.company,
+      cin: p.cin,
+      motif: p.motif,
+      results: p.results,
+    }));
+    return {
+        sessionName: session.name,
+        data: participants
+    };
+  } catch (err) {
+    console.error("Error fetching participants for session", sessionId, err);
+    return [];
+  }
+});
 
   // Server info handler
   ipcMain.handle("server-info", async (ev, serverUrl) => {
     try {
-      // Implementation for server info if needed
+      const prisma  = getPrisma();
+      if (!prisma) {
+        throw new Error("Database not available");
+      }
+      let user = await prisma.user.findFirst();
+      if (!user) {
+        user = await prisma.user.create({data : {}});
+      }
+      user = await prisma.user.update({
+        where: { id: user.id },
+        data: { url: serverUrl},
+      });
+      return {
+        success : true,
+      };
     } catch (error) {
       throw error;
     }
@@ -176,6 +191,46 @@ function setupIpcHandlers() {
     // This until second app finished
   });
 
+  ipcMain.handle("logout", async (ev) => {
+    const prisma =  getPrisma();
+    if (!prisma) {
+      throw new Error("Database not available");
+    }
+    try {
+      let user = await prisma.user.findFirst();
+      if (!user) {
+        return { success: false, message: "No user logged in" };
+      }
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { token: null, userId: null },
+      });
+      return { success: true };
+    } catch (error) {
+      throw error;
+    }
+  });
+
+
+  // this will change to send  req to server to check if logged in
+  ipcMain.handle("is-logged-in", async (ev) => {
+    const prisma = getPrisma();
+    if (!prisma) {
+      throw new Error("Database not available");
+    }
+    try {
+      let user = await prisma.user.findFirst();
+      if (user && user.token) {
+        return { logged_in: true };
+      } else {
+        return { logged_in: false };
+      }
+    } catch (error) {
+      throw error;
+    }
+  });
+
+  // this need at least the second backend to be finished
   ipcMain.handle("sync-now", async (ev) => {
     // Send request to server to see if u can sync now if yes sync if not need to prompt user to login
   });

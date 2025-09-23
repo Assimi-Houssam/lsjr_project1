@@ -42,7 +42,11 @@ declare global {
       ) => Promise<{ sessions: any[]; totalPages: number }>;
       getSession: (
         sessionId: string
-      ) => Promise<{ sessionId: string; serverUrl?: string; ok: boolean }>;
+      ) => Promise<{  sessionId : string  , serverUrl: string , ok : boolean }>;
+      server_info: (serverUrl : string ) => Promise<{ success: boolean; }>;
+      loggedout: () => Promise<{success: boolean;}>;
+      isloggedin: () => Promise<{logged_in: boolean;}>;
+     
       getParticipant(sessionId: string): Promise<any>;
 
       // Debug functions

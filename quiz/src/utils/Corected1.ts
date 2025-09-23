@@ -61,7 +61,7 @@ import r8q6 from "/src/assets/r8q6.png"
 
 
 
-export const choices = [
+export const choices_ar = [
   // regle 1
   [
     {
@@ -789,3 +789,10 @@ export const choices = [
   //   ],
   // },
 ];
+
+
+
+
+
+
+export const choices_fr = [];

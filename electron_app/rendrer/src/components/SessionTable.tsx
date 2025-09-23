@@ -3,6 +3,7 @@ import QRCodeDisplay from "./Qrcode";
 
 interface sessiontable {
   id: string;
+  sessionId: string;
   name: string;
   createdAt?: string | Date;
 }
@@ -112,7 +113,7 @@ export default function SessionTable({ onSessionClick }: Props) {
             throw new Error( "Failed to fetch session data");
           _setSessionData({
             sessionName:
-              sessions.find((s) => s.id === _sessionId)?.name || "Unknown",
+              sessions.find((s) => s.sessionId === _sessionId)?.name || "Unknown",
             sessionId: data.sessionId,
             serverUrl: data.serverUrl,
           });
@@ -234,7 +235,7 @@ export default function SessionTable({ onSessionClick }: Props) {
             {sessions.map((session, index) => (
               <tr
                 key={session.id}
-                onClick={() => onSessionClick(session.id)}
+                onClick={() => onSessionClick(session.sessionId)}
                 className={`cursor-pointer transition-all duration-200 hover:bg-orange-50 hover:shadow-md ${
                   index % 2 === 0 ? "bg-white" : "bg-gray-50"
                 }`}
@@ -249,7 +250,7 @@ export default function SessionTable({ onSessionClick }: Props) {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      showQRCode(session.id);
+                      showQRCode(session.sessionId);
                     }}
                     className="px-3 py-1 bg-orange-400 text-white rounded hover:bg-orange-500 transition-all duration-200"
                   >

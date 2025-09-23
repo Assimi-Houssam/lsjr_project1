@@ -6,12 +6,14 @@ import CreateSession from "./pages/Createsession";
 import Getsession from "./pages/Getsession";
 import Login from "./components/Login";
 import { DebugPanel } from "./components/DebugPanel";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   const [page, setPage] = useState("create");
-  const [needlogin, setNeedlogin] = useState(true);
+  const [needlogin, setNeedlogin] = useState(false);
   const [pageKey, setPageKey] = useState(0); // counter to force remount
   const [showDebugPanel, setShowDebugPanel] = useState(false);
+  const [log_in_out , setLog_in_out] = useState(false);
 
   // Listen for debug panel keyboard shortcut from main process
   useEffect(() => {
@@ -20,6 +22,18 @@ function App() {
         setShowDebugPanel(true);
       });
       return unsubscribe;
+    }
+  }, []);
+
+  // need useEffect for checking if he is logged in or not todo
+  useEffect(() => {
+    if ( window.api?.isloggedin ) {
+      window.api.isloggedin().then((response) => {
+        console.log("Login status:", response);
+        if (response.logged_in) {
+          setLog_in_out(true);
+        }
+      });
     }
   }, []);
 
@@ -59,8 +73,17 @@ function App() {
 
   const handleChooseServer = (serverUrl: string) => {
     console.log("Chosen server URL:", serverUrl);
-  
+    if ( window.api?.server_info ) {
+      window.api.server_info(serverUrl).then((response) => {
+        if (response.success) {
+          toast.success("Le serveur a été mis à jour avec succès.");
+        } else {
+            toast.error("Une erreur est survenue lors de la mise à jour du serveur.");
+        }
+      });
+    }
   };
+
   const handleSyncNow = () => {
     setNeedlogin(true);
   };
@@ -83,12 +106,25 @@ function App() {
   };
 
   const handleLoginCancel = () => {
-    console.log("Login cancelled");
     setNeedlogin(false);
   };
 
   const handleLogout = () => {
     console.log("User logged out");
+    if (!log_in_out) {
+      setNeedlogin(true);
+      return;
+    }
+    if ( window.api?.loggedout ) {
+      window.api.loggedout().then((response) => {
+        if (response.success) {
+          toast.success("Logged out successfully.");
+          setLog_in_out(false);
+        } else {
+          toast.error("Logout failed.");
+        }
+      });
+    }
   };
 
   return (
@@ -100,27 +136,23 @@ function App() {
         onChooseServer={handleChooseServer}
         onSyncNow={handleSyncNow}
         onLogout={handleLogout}
+        isLoggedIn={log_in_out}
       >
         {needlogin && (
-          <Login onLogin={handleLogin} onCancel={handleLoginCancel} />
+          <Login onLogin={handleLogin} onCancel={handleLoginCancel } />
         )}
         {page === "create" && <CreateSession key={`create-${pageKey}`} />}
         {page === "demo" && <Thequiz key={`demo-${pageKey}`} />}
         {page === "get" && <Getsession key={`get-${pageKey}`} />}
       </Navbar>
-
       {/* Debug Panel */}
       <DebugPanel
         isVisible={showDebugPanel}
         onClose={() => setShowDebugPanel(false)}
       />
-
-      {/* Debug hint for users */}
-      {!showDebugPanel && (
-        <div className="fixed bottom-4 right-4 text-xs text-gray-500 bg-black bg-opacity-50 px-2 py-1 rounded">
-          Press Ctrl+Shift+D for debug panel
-        </div>
-      )}
+      <Toaster
+      position="bottom-right"
+      reverseOrder={false} />
     </>
   );
 }

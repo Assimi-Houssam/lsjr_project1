@@ -56,8 +56,14 @@ async function createWindow() {
   }
 
   const win = new BrowserWindow({
-    width: 1500,
+    width: 1400,
     height: 800,
+    frame: true, 
+    titleBarStyle: "default",
+    titleBarOverlay: {
+      color: "#2f2f2f",
+      symbolColor: "#ded5d5",
+    },
     resizable: false,
     icon: appIcon || undefined,
     webPreferences: {
@@ -67,15 +73,19 @@ async function createWindow() {
     },
   });
 
-  // Store global reference for debug logging
-  global.mainWindow = win;
-
   win.setResizable(false);
+
+  // Remove menu bar (File, Edit, View, etc.)
+  win.setMenuBarVisibility(false);
+  win.setAutoHideMenuBar(true);
 
   // Add keyboard shortcuts for debugging
   win.webContents.on("before-input-event", (event, input) => {
     // F12 to toggle DevTools
-    if (input.key === "F12") {
+    if (
+      input.key === "F12" &&
+      (process.env.NODE_ENV === "development" || process.env.DEV === "1")
+    ) {
       win.webContents.toggleDevTools();
     }
     // Ctrl+Shift+D to open debug logs
@@ -88,7 +98,7 @@ async function createWindow() {
     }
   });
 
-  // Always open DevTools in development, and allow in production with DEV=1
+  // Only open DevTools in development
   if (process.env.NODE_ENV === "development" || process.env.DEV === "1") {
     win.webContents.openDevTools({ mode: "undocked" });
   }

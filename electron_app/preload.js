@@ -12,6 +12,8 @@ contextBridge.exposeInMainWorld("api", {
   getDebugLogs: () => ipcRenderer.invoke("get-debug-logs"),
   clearDebugLogs: () => ipcRenderer.invoke("clear-debug-logs"),
   getSystemInfo: () => ipcRenderer.invoke("get-system-info"),
+  loggedout: () => ipcRenderer.invoke("logout"),
+  isloggedin: () => ipcRenderer.invoke("is-logged-in"),
 
   // Listen for debug events from main process
   onMainDebugLog: (callback) => {

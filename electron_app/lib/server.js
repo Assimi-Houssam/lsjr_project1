@@ -94,8 +94,6 @@ async function startHttpServer(HTTP_PORT, QUIZ_DIST) {
                   <body style="font-family: sans-serif; padding: 24px;">
                     <h2>Quiz not built</h2>
                     <p>The quiz static files were not found on the host.</p>
-                    <p>Build the quiz and copy <code>quiz/dist</code> into the Electron app folder.</p>
-                    <p>Server info: <a href="/server-info">/server-info</a></p>
                   </body>
                 </html>
             `);
@@ -105,25 +103,59 @@ async function startHttpServer(HTTP_PORT, QUIZ_DIST) {
   appServer.post("/submit-result", async (req, res) => {
     try {
       console.log("Received submission for session", req.body);
-      return res
-        .status(400)
-        .json({ ok: false, error: "submissions are disabled in this demo" });
 
       const prisma = getPrisma();
       if (!prisma) {
-        console.warn(
-          "Prisma not initialized; accepted payload but did not persist:",
-          req.body
-        );
         return res
-          .status(202)
-          .json({ ok: true, note: "received but not stored (no DB)" });
+          .status(500)
+          .json({ ok: false, error: "Database not initialized" });
       }
-
-      // Database operations would go here when enabled
+      debugLog("info", "submit-result body:", req.body);
+        const session  = await prisma.session.findUnique({
+          where: { sessionId: req.body.sessionId },
+        });
+        if (!session) {
+          return res.status(400).json({ ok: false, error: "Invalid sessionId" });
+        }
+        let participant = await prisma.participant.findFirst({
+          where: { sessionId: session.id,
+             name: req.body.define.name ,
+              company: req.body.define.company,
+              motif: req.body.define.motif,
+              cin : req.body.define.cin},
+        });
+        debugLog("info", "Found participant:", participant);
+        if (!participant) {
+          participant = await prisma.participant.create({
+            data: {
+              sessionId: session.id,
+              name: req.body.define.name,
+              company: req.body.define.company,
+              cin : req.body.define.cin,
+              motif: req.body.define.motif,
+            },
+          });
+        }
+        await prisma.lsgrResult.create({
+          data: {
+            participantId: participant.id,
+            lsgr1: req.body.data[0],
+            lsgr2: req.body.data[1],
+            lsgr3: req.body.data[2],
+            lsgr4: req.body.data[3],
+            lsgr5: req.body.data[4],
+            lsgr6: req.body.data[5],
+            lsgr7: req.body.data[6],
+            lsgr8: req.body.data[7],
+            lsgr9: req.body.data[8],
+            lsgr10: req.body.data[9],
+          },
+        });
+        debugLog("info", "Result saved for participant:", participant.id);
       return res.json({ ok: true });
     } catch (err) {
       console.error("submit-result error:", err);
+      debugLog("error", "submit-result error:", err);
       return res.status(500).json({ ok: false, error: String(err) });
     }
   });
