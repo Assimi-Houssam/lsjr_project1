@@ -26,11 +26,12 @@ export default function Navbar({
   const [showServerInput, setShowServerInput] = useState(false);
   const [serverUrl, setServerUrl] = useState("");
   return (
-    <div className="flex h-screen bg-gray-100 ">
+    <div className="flex h-screen">
+
       {/* Fixed Sidebar */}
-      <div className="fixed left-4 top-4 bottom-4 w-56 bg-gradient-to-b from-orange-500/80 to-orange-500/70 z-10 rounded-2xl shadow-lg  shadow-black/40 ">
+        <div className="fixed left-8 top-20 bottom-24 w-56 bg-gradient-to-b from-orange-500/80 to-orange-500/70 z-10 rounded-2xl shadow-2xl shadow-black/60 ">
         {/* Logo Section */}
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center p-6">
           <img className="h-auto w-auto" src={logo1} alt="Logo" />
         </div>
 
@@ -264,7 +265,7 @@ export default function Navbar({
       {/* Main Content Area */}
       <div className="ml-64 flex-1 flex  items-center ">
         {/* Page Content */}
-        <div className="flex-1 bg-orange-50/30 overflow-hidden">{children}</div>
+        <div className="flex-1 overflow-hidden">{children}</div>
       </div>
     </div>
   );

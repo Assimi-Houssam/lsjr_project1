@@ -4,6 +4,7 @@ const fs = require("fs");
 const { debugLog, getDebugLogs } = require("./debug");
 const { getServerUrl } = require("./server");
 
+
 // App icon setup
 function setupAppIcon() {
   const ICON_DIR = path.join(__dirname, "..", "assets");

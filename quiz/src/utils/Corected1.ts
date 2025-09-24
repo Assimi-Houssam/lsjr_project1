@@ -831,7 +831,7 @@ export const choices_ar = [
         {
           id: "a",
           text: "، نعم، دون أي مشكلة، لأنني ماهر بما يكفي لتجنب الإصابة",
-          isCorrect: true,
+          isCorrect: false,
         },
         {
           id: "b",
@@ -851,7 +851,7 @@ export const choices_ar = [
         {
           id: "f",
           text: "فقط، إذا كانت العبارتان الأخيرتان السابقتان صحيحتين",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -875,8 +875,8 @@ export const choices_ar = [
       questionNumber: 3,
       imageUrl: r9q3,
       choice: [
-        { id: "a", text: "لا يهمني، هذا ليس واجبي", isCorrect: true },
-        { id: "b", text: "سأبلغ المدير المشرف على الفور", isCorrect: false },
+        { id: "a", text: "لا يهمني، هذا ليس واجبي", isCorrect: false },
+        { id: "b", text: "سأبلغ المدير المشرف على الفور", isCorrect: true },
       ],
     },
     {
@@ -885,11 +885,11 @@ export const choices_ar = [
       questionNumber: 4,
       imageUrl: r9q4,
       choice: [
-        { id: "a", text: "نعم، يكفي العمل بأمان", isCorrect: true },
+        { id: "a", text: "نعم، يكفي العمل بأمان", isCorrect: false },
         {
           id: "b",
           text: "لا، أبدا، الغرض الوحيد منه هو حالات الطوارئ",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -903,12 +903,12 @@ export const choices_ar = [
         {
           id: "a",
           text: "أحتاج فقط إلى تعليمات شفهية لأنني أعرف وأستطيع القيام بهذه المهمة",
-          isCorrect: true,
+          isCorrect: false,
         },
         {
           id: "b",
           text: "لفهم المخاطر التي ينطوي عليها النشاط وتطبيق الضوابط اللازمة HIRA Lite و SOP قبل أن أبدا المهمه، أحتاج إلى مراجعة",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -920,12 +920,12 @@ export const choices_ar = [
         {
           id: "a",
           text: "أذهب إلى مكتب المشرف الخاص بي، وهو يوقع تصريح العمل الذي أحتاجه",
-          isCorrect: true,
+          isCorrect: false,
         },
         {
           id: "b",
           text: "قبل بدء العمل، يقوم الفريق المعني بالمشرف بإجراء تقييم مفصل للمخاطر، والتأكد من مراجعة تصريح العمل، والتأكد من أن جميع الضوابط موجوده، والتأكد من أن تصريح العمل مصرح به في الموقع حيث سيتم تنفيذ العمل HIRA التي تم النظر فيها في",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
@@ -937,7 +937,7 @@ export const choices_ar = [
         {
           id: "a",
           text: " أستخدم خبرتي السابقة وأواصل العمل، لأن المهمة تحتاج إلى إنجاز",
-          isCorrect: true,
+          isCorrect: false,
         },
         {
           id: "b",
@@ -947,17 +947,26 @@ export const choices_ar = [
         {
           id: "c",
           text: "وتعديل الضوابط للتخفيف من المخاطر الجديدة المحددة. إذا لزم الأمر، أطلب من ، HIRA Lite) أقوم بإيقاف النشاط وإعادة تقييم المخاطر (HIRA Lite) وتعديل الضوابط للتخفيف من المخاطر الجديدة المحددة. إذا لزم الأمر، أطلب من المشرف اتخاذ القرار الأفضل",
-          isCorrect: false,
+          isCorrect: true,
         },
       ],
     },
     {
-      title: "عندما يكون نشاطا حرجًا، أتواصل بوضوح وأستخدم الاتصال ثلاثي الاتجاهات",
+      title:
+        "عندما يكون نشاطا حرجًا، أتواصل بوضوح وأستخدم الاتصال ثلاثي الاتجاهات",
       questionNumber: 4,
       imageUrl: r10q4,
       choice: [
-        { id: "a", text: "إذا كنت سأقوم بمناورة باستخدام رافعة، فأنا ببساطة أشير إلى مشغل الرافعة للإشارة إلى الإجراء الذي يجب اتخلاه، مع التأكد من أنه تبعني", isCorrect: true },
-        { id: "b", text: "Crane إذا كنت سأشير إلى مشغل رافعة لإجراء مناوره، فإنني أستخدم الاتصال ثلاثي الاتجاه، على سبيل المثال أنا، «اقلب الطفره إلى اليمين»؛ . هل تريد مني تحويل الطفرة إلى اليمين؟» ؛ أنا: «نعم، هذا صحيح، أدر الطفره إلى اليمين» :.Op", isCorrect: false },
+        {
+          id: "a",
+          text: "إذا كنت سأقوم بمناورة باستخدام رافعة، فأنا ببساطة أشير إلى مشغل الرافعة للإشارة إلى الإجراء الذي يجب اتخلاه، مع التأكد من أنه تبعني",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Crane إذا كنت سأشير إلى مشغل رافعة لإجراء مناوره، فإنني أستخدم الاتصال ثلاثي الاتجاه، على سبيل المثال أنا، «اقلب الطفره إلى اليمين»؛ . هل تريد مني تحويل الطفرة إلى اليمين؟» ؛ أنا: «نعم، هذا صحيح، أدر الطفره إلى اليمين» :.Op",
+          isCorrect: true,
+        },
       ],
     },
     {
@@ -965,21 +974,1024 @@ export const choices_ar = [
       questionNumber: 5,
       imageUrl: r10q5,
       choice: [
-        { id: "a", text: "نعم، كم الامتثال للقاعدة وتم تحديد جميع المخاطر وتقييم جميع المخاطر في البيئة", isCorrect: true },
-        { id: "b", text: "لا، لا يتم اتباع القاعدة، ولا أحد يطبق اليقظة المشتركة", isCorrect: false },
+        {
+          id: "a",
+          text: "نعم، كم الامتثال للقاعدة وتم تحديد جميع المخاطر وتقييم جميع المخاطر في البيئة",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "لا، لا يتم اتباع القاعدة، ولا أحد يطبق اليقظة المشتركة",
+          isCorrect: true,
+        },
       ],
     },
     {
       title:
-        "عندما ألاحظ أن زميلا في العمل يكسر القاعدة الذهبية التي تنقذ الأرواح...",
+        "...عندما ألاحظ أن زميلا في العمل يكسر القاعدة الذهبية التي تنقذ الأرواح ",
       questionNumber: 6,
       imageUrl: r10q6,
       choice: [
-        { id: "a", text: "", isCorrect: true },
-        { id: "b", text: "", isCorrect: false },
+        {
+          id: "a",
+          text: "أتجاهله ، فهو يعرف المخاطر والعواقب",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: ". أكمل أنشطتي وإذا كان لدي الوقت لاحقا، أذهب إلى مشرفه لإبلاغه",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "أوقف النشاط فورا وأتحدث إلى الجاني لتوعيته بالمخاطر والتصرف أو اتخاذ إجراء",
+          isCorrect: true,
+        },
       ],
     },
   ],
 ];
 
-export const choices_fr = [];
+export const choices_fr = [
+  // règle 1
+  [
+    {
+      title: "Faut-il permettre à la personne d'entrer sur le site ?",
+      questionNumber: 1,
+      imageUrl: r1q1,
+      choice: [
+        { id: "a", text: "Non", isCorrect: true },
+        { id: "b", text: "Oui", isCorrect: false },
+      ],
+    },
+    {
+      title: "Cette personne doit-elle consulter son médecin du travail ?",
+      questionNumber: 2,
+      imageUrl: r1q2,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title: "La personne doit-elle signaler qu'elle se sent mal ?",
+      questionNumber: 3,
+      imageUrl: r1q3,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 4,
+      imageUrl: r1q4,
+      choice: [
+        { id: "a", text: "Non", isCorrect: true },
+        { id: "b", text: "Oui", isCorrect: false },
+      ],
+    },
+  ],
+  // règle 2
+  [
+    {
+      title:
+        "À partir de quelle hauteur considère-t-on un travail en hauteur ?",
+      questionNumber: 1,
+      imageUrl: r2q1,
+      choice: [
+        { id: "a", text: "1,5 mètre", isCorrect: false },
+        { id: "b", text: "1,8 mètre", isCorrect: true },
+        { id: "c", text: "2,0 mètres", isCorrect: false },
+        { id: "d", text: "3,0 mètres", isCorrect: false },
+      ],
+    },
+    {
+      title:
+        "Est-il nécessaire de porter un casque avec jugulaire bien réglée en travail en hauteur ?",
+      questionNumber: 2,
+      imageUrl: r2q2,
+      choice: [
+        { id: "a", text: "Oui, c'est obligatoire", isCorrect: true },
+        { id: "b", text: "Non, ce n'est pas obligatoire", isCorrect: false },
+        { id: "c", text: "Je peux décider librement", isCorrect: false },
+      ],
+    },
+    {
+      title:
+        "Puis-je accéder librement à l'élément pour effectuer le travail ?",
+      questionNumber: 3,
+      imageUrl: r2q3,
+      choice: [
+        { id: "a", text: "Oui, si je fais attention", isCorrect: false },
+        {
+          id: "b",
+          text: "Non, je dois obtenir une autorisation et réaliser une analyse des risques (HIRA)",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title: "À quelle fréquence doit-on inspecter l'état du harnais ?",
+      questionNumber: 4,
+      imageUrl: r2q4,
+      choice: [
+        { id: "a", text: "Quotidiennement", isCorrect: true },
+        { id: "b", text: "Hebdomadairement", isCorrect: false },
+        { id: "c", text: "Avant chaque utilisation", isCorrect: false },
+      ],
+    },
+    {
+      title:
+        "Dois-je porter un harnais lorsque je travaille en hauteur dans une zone confinée ?",
+      questionNumber: 5,
+      imageUrl: r2q5,
+      choice: [
+        {
+          id: "a",
+          text: "Oui, il doit être porté et relié à 100% du temps aux points d'ancrage définis par un professionnel",
+          isCorrect: true,
+        },
+        {
+          id: "b",
+          text: "Oui, mais je peux le détacher brièvement si inconfortable",
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      title: "Puis-je décider moi-même du point d'ancrage pour mon câble ?",
+      questionNumber: 6,
+      imageUrl: r2q6,
+      choice: [
+        { id: "a", text: "Oui, sans problème", isCorrect: false },
+        {
+          id: "b",
+          text: "Non, je dois utiliser seulement les points d'ancrage autorisés",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title:
+        "Dois-je enregistrer mon analyse des risques spécifique et actuelle (HIRA Lite) avant de travailler en hauteur ?",
+      questionNumber: 7,
+      imageUrl: r2q7,
+      choice: [
+        {
+          id: "a",
+          text: "Oui, je dois réaliser l'HIRA et comprendre tous les risques et contrôles",
+          isCorrect: true,
+        },
+        { id: "b", text: "Non, ce n'est pas requis", isCorrect: false },
+      ],
+    },
+    {
+      title: "Puis-je utiliser un échafaudage pour travailler en hauteur ?",
+      questionNumber: 8,
+      imageUrl: r2q8,
+      choice: [
+        {
+          id: "a",
+          text: "Oui, mais seulement si une étiquette verte datée du jour est présente",
+          isCorrect: true,
+        },
+        {
+          id: "b",
+          text: "Oui, même si la date n'est pas la date du jour",
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      title: "Puis-je accéder librement à un site élevé ?",
+      questionNumber: 9,
+      imageUrl: r2q9,
+      choice: [
+        { id: "a", text: "Oui, sans problème", isCorrect: false },
+        {
+          id: "b",
+          text: "Non, je ne suis pas équipé du matériel nécessaire",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title:
+        "Faut-il détacher le harnais lors de l'utilisation d'une nacelle élévatrice/personnelle ?",
+      questionNumber: 10,
+      imageUrl: r2q10,
+      choice: [
+        {
+          id: "a",
+          text: "Il faut attacher le harnais seulement lorsque la nacelle se déplace",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Vous devez être toujours attaché, tout le temps",
+          isCorrect: true,
+        },
+        {
+          id: "c",
+          text: "Je dois être relié sauf si j'atteins un équipement en dehors de la plate-forme",
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      title:
+        "Puis-je porter des outils à la main en montant des échelles ou des escaliers sur véhicules ou remorques ?",
+      questionNumber: 11,
+      imageUrl: r2q11,
+      choice: [
+        { id: "a", text: "Oui", isCorrect: false },
+        {
+          id: "b",
+          text: "Non, je dois toujours avoir au moins 3 points de contact",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title:
+        "Puis-je enlever rapidement un mousqueton ou une longe quand j'utilise une seule corde pour changer de point d'ancrage ?",
+      questionNumber: 12,
+      imageUrl: r2q12,
+      choice: [
+        { id: "a", text: "Oui", isCorrect: false },
+        {
+          id: "b",
+          text: "Non, j'ai besoin d'une double longe et je dois rester attaché en permanence",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title:
+        "Dois-je être relié par harnais lorsque je travaille au-dessus ou près d'une trappe ouverte de 2 mètres de profondeur ?",
+      questionNumber: 13,
+      imageUrl: r2q13,
+      choice: [
+        { id: "a", text: "Oui", isCorrect: true },
+        { id: "b", text: "Non", isCorrect: false },
+      ],
+    },
+    {
+      title: "Peut-on travailler depuis une simple échelle ?",
+      questionNumber: 14,
+      imageUrl: r2q14,
+      choice: [
+        {
+          id: "a",
+          text: "Non, il ne faut pas travailler depuis une échelle simple ; utiliser des moyens offrant une plate-forme sûre",
+          isCorrect: true,
+        },
+        { id: "b", text: "Oui", isCorrect: false },
+      ],
+    },
+  ],
+  // règle 3
+  [
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 1,
+      imageUrl: r3q1,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        {
+          id: "b",
+          text: "Oui, les exigences sont respectées",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 2,
+      imageUrl: r3q2,
+      choice: [
+        {
+          id: "a",
+          text: "Non, les procédures ne sont pas respectées",
+          isCorrect: true,
+        },
+        {
+          id: "b",
+          text: "LOTOTO : oui, toutes les étapes sont suivies",
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 3,
+      imageUrl: r3q3,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        {
+          id: "b",
+          text: "Oui, les trois étapes du processus sont respectées",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 4,
+      imageUrl: r3q4,
+      choice: [
+        { id: "a", text: "Non, la règle n'est pas respectée", isCorrect: true },
+        { id: "b", text: "Oui, la règle est respectée", isCorrect: false },
+      ],
+    },
+  ],
+
+  // règle 4
+  [
+    {
+      title:
+        "Ces situations représentent-elles un danger pour les espaces confinés ?",
+      questionNumber: 1,
+      imageUrl: r4q1,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title:
+        "Si vous êtes chargé de travailler dans un espace confiné, quels documents avez-vous besoin ?",
+      questionNumber: 2,
+      imageUrl: r4q2,
+      choice: [
+        {
+          id: "a",
+          text: "Un certificat de formation aux espaces confinés",
+          isCorrect: false,
+        },
+        { id: "b", text: "Un permis de travail", isCorrect: true },
+        { id: "c", text: "Les deux", isCorrect: false },
+      ],
+    },
+    {
+      title: "Pouvez-vous entrer dans l'espace confiné ?",
+      questionNumber: 3,
+      imageUrl: r4q3,
+      choice: [
+        { id: "a", text: "Oui", isCorrect: false },
+        {
+          id: "b",
+          text: "Non, la vanne de ventilation est ouverte et je ne suis pas équipé d'un harnais",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title: "Que doivent faire ces personnes ?",
+      questionNumber: 4,
+      imageUrl: r4q4,
+      choice: [
+        {
+          id: "a",
+          text: "Oui, l'atmosphère a été testée par les pompiers, donc pas besoin de détecteurs personnels, ils sont optionnels",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Oui, tant qu'au moins un collègue a un analyseur de gaz personnel en fonctionnement, c'est suffisant",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "Non, la personne dont l'analyseur est éteint ou défectueux doit arrêter le travail et quitter l'espace confiné ; les détecteurs personnels sont obligatoires et doivent fonctionner en permanence",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title: "Pouvez-vous commencer ou continuer le travail ?",
+      questionNumber: 5,
+      imageUrl: r4q5,
+      choice: [
+        {
+          id: "a",
+          text: "La personne qui entend l'alarme doit réinitialiser son détecteur, c'est probablement une fausse alerte",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "La personne avec le détecteur vert doit se rapprocher pour vérifier si le détecteur de son collègue sonne aussi",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "La personne dont le détecteur sonne doit arrêter le travail, se rapprocher de son collègue, réinitialiser son détecteur puis revenir à la tâche ; si l'alarme revient, quitter la zone",
+          isCorrect: false,
+        },
+        {
+          id: "d",
+          text: "Les deux doivent s'arrêter et évacuer. Il y a un problème qui peut se détériorer rapidement",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title: "Que doit faire le surveillant ?",
+      questionNumber: 6,
+      imageUrl: r4q6,
+      choice: [
+        {
+          id: "a",
+          text: "Il doit aller sauver la personne inconsciente",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Il peut entrer avec un détecteur de gaz et tenter un sauvetage",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "Il ne doit pas entrer dans l'espace confiné potentiellement contaminé ; il doit alerter immédiatement les services de secours, seuls des intervenants équipés d'appareils respiratoires autonomes peuvent entrer",
+          isCorrect: true,
+        },
+      ],
+    },
+  ],
+
+  // règle 5
+  [
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 1,
+      imageUrl: r5q1,
+      choice: [
+        { id: "a", text: "Non", isCorrect: true },
+        { id: "b", text: "Oui", isCorrect: false },
+      ],
+    },
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 2,
+      imageUrl: r5q2,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 3,
+      imageUrl: r5q3,
+      choice: [
+        { id: "a", text: "Non", isCorrect: true },
+        { id: "b", text: "Oui", isCorrect: false },
+      ],
+    },
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 4,
+      imageUrl: r5q4,
+      choice: [
+        { id: "a", text: "Non", isCorrect: true },
+        { id: "b", text: "Oui", isCorrect: false },
+      ],
+    },
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 5,
+      imageUrl: r5q5,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 6,
+      imageUrl: r5q6,
+      choice: [
+        { id: "a", text: "Non", isCorrect: true },
+        { id: "b", text: "Oui", isCorrect: false },
+      ],
+    },
+    {
+      title: "Peut-on actionner la grue ?",
+      questionNumber: 7,
+      imageUrl: r5q7,
+      choice: [
+        {
+          id: "a",
+          text: "Oui, la charge est encore au sol donc le cône de sécurité est nul",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Non, la personne au sol est trop proche et doit s'éloigner avant tout mouvement de la grue",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title:
+        "Puis-je m'approcher d'une charge qui vient d'être déposée au sol ?",
+      questionNumber: 8,
+      imageUrl: r5q8,
+      choice: [
+        {
+          id: "a",
+          text: "Oui, la charge est au sol donc la zone de sécurité est nulle",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Non, la grue peut encore bouger ou la charge peut se déplacer de façon imprévisible",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title:
+        "Ai-je besoin de formation et d'une autorisation pour effectuer des opérations de levage ?",
+      questionNumber: 9,
+      imageUrl: r5q9,
+      choice: [
+        {
+          id: "a",
+          text: "Non, pour des opérations simples n'importe qui peut le faire",
+          isCorrect: false,
+        },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+  ],
+
+  // règle 6
+  [
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 1,
+      imageUrl: r6q1,
+      choice: [
+        { id: "a", text: "Non, la règle n'est pas respectée", isCorrect: true },
+        { id: "b", text: "Oui, la règle est respectée", isCorrect: false },
+      ],
+    },
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 2,
+      imageUrl: r6q2,
+      choice: [
+        { id: "a", text: "Non, la règle n'est pas respectée", isCorrect: true },
+        { id: "b", text: "Oui, la règle est respectée", isCorrect: false },
+      ],
+    },
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 3,
+      imageUrl: r6q3,
+      choice: [
+        { id: "a", text: "Non, la règle n'est pas respectée", isCorrect: true },
+        { id: "b", text: "Oui, la règle est respectée", isCorrect: false },
+      ],
+    },
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 4,
+      imageUrl: r6q4,
+      choice: [
+        { id: "a", text: "Non, la règle n'est pas respectée", isCorrect: true },
+        { id: "b", text: "Oui, la règle est respectée", isCorrect: false },
+      ],
+    },
+    {
+      title: "La règle d'or pour sauver des vies est-elle respectée ?",
+      questionNumber: 5,
+      imageUrl: r6q5,
+      choice: [
+        {
+          id: "a",
+          text: "Non, la règle n'est pas respectée et la visibilité est insuffisante",
+          isCorrect: true,
+        },
+        { id: "b", text: "Oui, la règle est respectée", isCorrect: false },
+      ],
+    },
+    {
+      title:
+        "Le conducteur respecte-t-il la règle d'or concernant la position du chariot élévateur ?",
+      questionNumber: 6,
+      imageUrl: r6q6,
+      choice: [
+        {
+          id: "a",
+          text: "Non, la règle n'est pas respectée",
+          isCorrect: false,
+        },
+        { id: "b", text: "Oui, la règle est respectée", isCorrect: true },
+      ],
+    },
+  ],
+
+  // règle 7
+  [
+    {
+      title:
+        "Ces situations représentent-elles un danger lié aux voies ferrées ?",
+      questionNumber: 1,
+      imageUrl: r7q1,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title:
+        "Ces situations représentent-elles un danger lié aux voies ferrées ?",
+      questionNumber: 2,
+      imageUrl: r7q2,
+      choice: [
+        {
+          id: "a",
+          text: "Oui, un passage à niveau reste un risque contrôlé mais le danger existe encore (faible)",
+          isCorrect: true,
+        },
+        {
+          id: "b",
+          text: "Non, les contrôles ont totalement éliminé les risques ferroviaires",
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      title: "La règle est-elle respectée ?",
+      questionNumber: 3,
+      imageUrl: r7q3,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title: "La règle est-elle respectée ?",
+      questionNumber: 4,
+      imageUrl: r7q4,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title: "La règle est-elle respectée ?",
+      questionNumber: 5,
+      imageUrl: r7q5,
+      choice: [
+        { id: "a", text: "Non", isCorrect: true },
+        { id: "b", text: "Oui", isCorrect: false },
+      ],
+    },
+    {
+      title: "La règle est-elle respectée ?",
+      questionNumber: 6,
+      imageUrl: r7q6,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title: "La règle est-elle respectée ?",
+      questionNumber: 7,
+      imageUrl: r7q7,
+      choice: [
+        { id: "a", text: "Non", isCorrect: true },
+        { id: "b", text: "Oui", isCorrect: false },
+      ],
+    },
+  ],
+
+  // règles 8
+  [
+    {
+      title:
+        "Le dessin dans cet environnement ou espace proche représente-t-il un risque de gaz ou d'explosion ?",
+      questionNumber: 1,
+      imageUrl: r8q1,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title:
+        "Cette situation présente-t-elle un risque de gaz ou d'explosion ? (site de conversion et stockage de gaz)",
+      questionNumber: 2,
+      imageUrl: r8q2,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title:
+        "Cette situation présente-t-elle un risque de gaz ou d'explosion ? (site de conversion et stockage de carburant)",
+      questionNumber: 3,
+      imageUrl: r8q3,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title:
+        "Cette situation représente-t-elle un risque de gaz ou d'explosion ? (unité de production d'oxygène)",
+      questionNumber: 4,
+      imageUrl: r8q4,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title:
+        "L'utilisation d'un solvant dans un espace clos représente-t-elle un risque de gaz ou d'explosion ?",
+      questionNumber: 5,
+      imageUrl: r8q5,
+      choice: [
+        { id: "a", text: "Non", isCorrect: false },
+        { id: "b", text: "Oui", isCorrect: true },
+      ],
+    },
+    {
+      title:
+        "Une personne équipée d'un appareil respiratoire autonome peut-elle entrer en zone à gaz dangereux ?",
+      questionNumber: 6,
+      imageUrl: r8q6,
+      choice: [
+        { id: "a", text: "Non", isCorrect: true },
+        { id: "b", text: "Oui", isCorrect: false },
+      ],
+    },
+    {
+      title: "Pouvons-nous commencer ou continuer le travail ?",
+      questionNumber: 5,
+      imageUrl: r8q5,
+      choice: [
+        {
+          id: "a",
+          text: "Oui, l'atmosphère a été vérifiée par les pompiers, donc pas besoin de détecteurs personnels",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Oui, tant qu'au moins un collègue a un analyseur de gaz personnel en fonctionnement",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "Non, la personne dont l'analyseur est éteint ou défectueux doit arrêter le travail et quitter l'espace ; les détecteurs personnels sont obligatoires et doivent fonctionner en permanence",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title: "Que devons-nous faire, mon collègue et moi ?",
+      questionNumber: 6,
+      imageUrl: r8q6,
+      choice: [
+        {
+          id: "a",
+          text: "Le détecteur du collègue sonne, il doit le réinitialiser car c'est peut-être une fausse alerte",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Rester proches pour vérifier si mon détecteur se met aussi à sonner",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "Le collègue doit arrêter le travail, s'éloigner, réinitialiser son détecteur et ne revenir que si l'alarme ne se réactive pas ; sinon évacuer",
+          isCorrect: false,
+        },
+        {
+          id: "d",
+          text: "Nous devons tous les deux arrêter et évacuer. Il y a un problème qui peut s'aggraver vite",
+          isCorrect: true,
+        },
+      ],
+    },
+  ],
+
+  // règle 9
+  [
+    {
+      title:
+        "Si je dois intervenir, puis-je retirer la protection (grillage, couverture, etc.) ?",
+      questionNumber: 1,
+      imageUrl: r9q1,
+      choice: [
+        {
+          id: "a",
+          text: "Oui, sans problème, car je suis suffisamment compétent",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Oui, si j'ai une délégation de mon superviseur",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "Oui, si j'ai mis un verrou sur l'interrupteur ou dans la boîte de consignation (LOTOTO)",
+          isCorrect: false,
+        },
+        {
+          id: "d",
+          text: "Oui, si le HIRA Lite a été réalisé avec des experts locaux et que tous les contrôles sont en place",
+          isCorrect: false,
+        },
+        {
+          id: "f",
+          text: "Seulement si les deux dernières conditions sont remplies",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title:
+        "Dois-je remettre la protection (capot, garde, etc.) une fois ma réparation terminée ?",
+      questionNumber: 2,
+      imageUrl: r9q2,
+      choice: [
+        { id: "a", text: "Oui, toujours", isCorrect: true },
+        {
+          id: "b",
+          text: "Non, ce sera fait par mon superviseur",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "Mon collègue de la prochaine équipe le remettra",
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      title:
+        "Je vois une protection/une couverture manquante ou desserrée sur un équipement en fonctionnement",
+      questionNumber: 3,
+      imageUrl: r9q3,
+      choice: [
+        {
+          id: "a",
+          text: "Je m'en fiche, ce n'est pas mon travail",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "J'en informe immédiatement le superviseur responsable",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title:
+        "Puis-je utiliser l'arrêt d'urgence (bouton rouge) pour arrêter la production et l'utiliser ?",
+      questionNumber: 4,
+      imageUrl: r9q4,
+      choice: [
+        {
+          id: "a",
+          text: "Oui, c'est suffisant pour travailler en sécurité",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Non, jamais, il est réservé aux situations d'urgence",
+          isCorrect: true,
+        },
+      ],
+    },
+  ],
+
+  // règle 10
+  [
+    {
+      title: "Si je vais effectuer une activité...",
+      questionNumber: 1,
+      imageUrl: r10q1,
+      choice: [
+        {
+          id: "a",
+          text: "J'ai seulement besoin d'instructions orales car je sais faire la tâche",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "J'ai besoin de revoir le HIRA Lite et la SOP pour comprendre les risques et appliquer les contrôles avant de commencer",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title: "...quand un permis de travail est nécessaire",
+      questionNumber: 2,
+      imageUrl: r10q2,
+      choice: [
+        {
+          id: "a",
+          text: "Je vais au bureau du superviseur et il signe le permis",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Avant le travail, l'équipe de supervision réalise une évaluation détaillée des risques, révise le permis et s'assure que tous les contrôles sont en place",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title:
+        "S'il y a quelque chose d'incertain avant ou pendant l'activité...",
+      questionNumber: 3,
+      imageUrl: r10q3,
+      choice: [
+        {
+          id: "a",
+          text: "J'utilise mon expérience précédente et je continue",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Je continue parce que j'ai déjà un plan antérieur",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "J'arrête l'activité si nécessaire, je réévalue les risques (HIRA Lite) et j'ajuste les contrôles ; si besoin, je demande au superviseur de décider",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title:
+        "Lors d'une activité critique, je communique clairement en utilisant la communication en trois sens",
+      questionNumber: 4,
+      imageUrl: r10q4,
+      choice: [
+        {
+          id: "a",
+          text: "Si je dirige une manœuvre de grue, je fais simplement un geste au conducteur en m'assurant qu'il me suit",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Si je dirige une manœuvre de grue, j'utilise la communication en trois sens (par ex. : 'Tournez le bras à droite' ; 'Pouvez-vous tourner le bras à droite ?' ; 'Oui, tournez à droite')",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title: "La règle de vigilance partagée est-elle pratiquée ?",
+      questionNumber: 5,
+      imageUrl: r10q5,
+      choice: [
+        {
+          id: "a",
+          text: "Oui, la conformité à la règle est bonne et tous les risques sont identifiés",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Non, la règle n'est pas suivie et personne ne pratique la vigilance partagée",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      title:
+        "...lorsque je remarque qu'un collègue enfreint la règle d'or qui sauve des vies",
+      questionNumber: 6,
+      imageUrl: r10q6,
+      choice: [
+        {
+          id: "a",
+          text: "Je l'ignore, il connaît les risques",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "Je continue mes tâches et j'en parlerai plus tard si j'ai le temps",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "J'arrête l'activité immédiatement et j'interviens ou j'en informe pour corriger le comportement",
+          isCorrect: true,
+        },
+      ],
+    },
+  ],
+];

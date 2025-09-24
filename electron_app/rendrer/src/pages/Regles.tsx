@@ -41,6 +41,7 @@ export default function Regles({
     if (currentQuestionIndex < choices.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
+        setCurrentQuestionIndex(0);
         onRuleComplete?.(true);
     }
   };
@@ -50,15 +51,17 @@ export default function Regles({
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }else {
+        setCurrentQuestionIndex(0);
         onRulePrevious?.();
     }
 
   }
 
   const currentQuestion = choices[currentQuestionIndex];
+  console.log("Rendering question", currentQuestionIndex, currentQuestion);
 
   return (
-    <div className="p-4">
+    <div className="p-4 h-full max-h-screen overflow-y-auto">
       <h1 className="text-2xl font-bold mb-4 flex justify-center">{title}</h1>
 
       <Question

@@ -16,8 +16,7 @@ export interface define {
 }
 
 function Quiz() {
-  // const QUESTIONS_PER_RULE = [4, 14, 4,6,9,6,7,8,4,6];
-  const QUESTIONS_PER_RULE = [4, 14];
+  const QUESTIONS_PER_RULE = [4, 14, 4,6,9,6,7,8,4,6];
   // initialize with `null` (unanswered). each sub-array can have different length.
   const [rules, _setRules] = useState<Answer[][]>(() =>
     QUESTIONS_PER_RULE.map((count) => Array(count).fill(false))
@@ -74,7 +73,7 @@ function Quiz() {
         <Regles
           questions={rules[currentRuleIndex]}
           title={titles[currentRuleIndex]}
-          choices={choices[currentRuleIndex]}
+          choices={choices[currentRuleIndex] as unknown as any}
           onRuleComplete={handleRuleComplete}
           onRulePrevious={handleRulePrevious}
         />

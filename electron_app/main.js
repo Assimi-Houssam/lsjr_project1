@@ -1,5 +1,6 @@
 require("dotenv").config();
 const { app } = require("electron");
+const {startCron, stopCron} = require("./lib/cronjob");
 
 // Import our modular components
 const { debugLog } = require("./lib/debug");
@@ -56,6 +57,8 @@ app.whenReady().then(async () => {
     debugLog("info", "🖥️ Creating main window...");
     await createWindow();
     debugLog("info", "✅ Window created");
+    startCron();
+    debugLog("info", "🕑 Cron job started");
 
     debugLog("info", "=== ✅ App startup completed successfully ===");
   } catch (err) {
@@ -74,6 +77,7 @@ app.whenReady().then(async () => {
 
 app.on("before-quit", async () => {
   try {
+    stopCron();
     closeHttpServer();
     stopViteDevServer();
     await disconnectPrisma();

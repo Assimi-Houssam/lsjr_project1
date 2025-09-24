@@ -13,13 +13,13 @@ export default function Thequiz() {
     <div
       className={`transition-all duration-300 ${
         isFullscreen
-          ? "fixed inset-0 z-50 bg-white"
-          : "bg-white rounded-xl shadow-lg border border-gray-200 m-4 overflow-hidden"
+          ? "fixed inset-0 z-50 bg-white "
+          : "bg-white rounded-xl drop-shadow-xl border border-gray-200 m-4 overflow-hidden mt-8"
       }`}
     >
       {/* Card Header with Fullscreen Toggle */}
       {!isFullscreen && (
-        <div className="flex justify-between items-center p-4 border-b border-gray-200 bg-gray-50">
+        <div className="flex justify-between items-center p-4 border-b border-gray-200 bg-gray-50 ">
           <h2 className="text-lg font-semibold text-gray-800">Quiz Section</h2>
           <button
             onClick={toggleFullscreen}

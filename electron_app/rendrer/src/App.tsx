@@ -129,6 +129,7 @@ function App() {
 
   return (
     <>
+    <div className=" h-screen w-screen overflow-hidden bg-gradient-to-b from-gray-500/50 to-white">
       <Navbar
         onCreateSession={handleCreateSession}
         onDemoQuiz={handleDemoQuiz}
@@ -153,6 +154,7 @@ function App() {
       <Toaster
       position="bottom-right"
       reverseOrder={false} />
+    </div>
     </>
   );
 }

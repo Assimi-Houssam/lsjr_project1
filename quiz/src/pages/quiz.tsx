@@ -21,7 +21,7 @@ function Quiz( { langue }: { langue: string }) {
   const choice = langue === 'ar' ? choices_ar :  choices_fr ;
   const titles = langue === 'ar' ? titles_ar :  titles_fr ;
   const QUESTIONS_PER_RULE1 = [4, 14, 4,6,9,6,7,8,4,6];
-  const QUESTIONS_PER_RULE = [4];
+  const QUESTIONS_PER_RULE = [4,14];
   // initialize with `null` (unanswered). each sub-array can have different length.
   const [rules, setRules] = useState<Answer[][]>(() =>
     QUESTIONS_PER_RULE1.map((count) => Array(count).fill(false))

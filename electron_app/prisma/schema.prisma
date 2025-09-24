@@ -28,7 +28,7 @@ model Session {
 model lsgrResult {
   id            String      @id @default(cuid())
   participantId String      @unique
-  participant   Participant @relation(fields: [participantId], references: [id])
+  participant   Participant @relation(fields: [participantId], references: [id] , onDelete: Cascade)
   lsgr1         Boolean     @default(false)
   lsgr2         Boolean     @default(false)
   lsgr3         Boolean     @default(false)
@@ -44,7 +44,7 @@ model lsgrResult {
 
 model Participant {
   id        String      @id @default(cuid())
-  session   Session     @relation(fields: [sessionId], references: [id])
+  session   Session     @relation(fields: [sessionId], references: [id], onDelete: Cascade)
   sessionId String
   name      String
   company   String

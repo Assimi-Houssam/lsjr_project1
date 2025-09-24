@@ -50,7 +50,7 @@ const CreateSession: React.FC = () => {
         }`}
       >
         <div
-          className={`bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-300 ${
+          className={`bg-white rounded-xl drop-shadow-2xl shadow-black/20 overflow-hidden transition-all duration-300 ${
             isFullscreen
               ? "w-full h-full max-w-4xl"
               : "shadow-lg hover:shadow-xl"
