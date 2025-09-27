@@ -27,7 +27,8 @@ interface Props {
   choices: Choices;
   title: string;
   regleIndex?: number;
-  onRuleComplete?: (success: boolean, updatedRules: Answer[][]) => void;
+  onRuleComplete?: (updatedRules: Answer[][]) => void;
+  rule: Answer[][];
 }
 
 export default function Regles({
@@ -37,6 +38,7 @@ export default function Regles({
   choices,
   regleIndex,
   onRuleComplete,
+  rule,
 }: Props) {
   let rules = questions;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -45,10 +47,25 @@ export default function Regles({
   const [isRetryPhase, setIsRetryPhase] = useState(false);
   const [showFailureMessage, setShowFailureMessage] = useState(false);
   const [currentRetryIndex, setCurrentRetryIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    function check(){
+      setIsLoading(true);
+      for (let i = 0; i < questions.length; i++) {
+        console.log("questions[", i, "]", questions[i]);
+        if (questions[i] === false) {
+          setIsLoading(false);
+          return;
+        }
+      }
+      setIsLoading(false);
+      onRuleComplete?.(rule);
+    }
 
-  }, [regleIndex, title]);
+    check();
+
+  }, []);
 
 
 
@@ -79,15 +96,13 @@ export default function Regles({
       const allCorrect = rules.every((answer) => answer === true);
 
       if (allCorrect) {
-        // All correct - move to next rule
-        console.log("[All correct, moving to next rule]");
         setIsRetryPhase(false);
         setWrongAnswers([]);
         setRetryCount(0);
         setCurrentRetryIndex(0);
         setShowFailureMessage(false);
         setCurrentQuestionIndex(0);
-        onRuleComplete?.(true, updatedRules);
+        onRuleComplete?.( updatedRules);
       } else {
         // There are wrong answers
         if (!isRetryPhase) {
@@ -123,7 +138,7 @@ export default function Regles({
               setRetryCount(0);
               setCurrentRetryIndex(0);
               console.log("Final result after retries", finalAllCorrect);
-              onRuleComplete?.(finalAllCorrect, updatedRules);
+              onRuleComplete?.( updatedRules);
             }
           }
         }
@@ -159,6 +174,14 @@ export default function Regles({
   }
 
   const currentQuestion = choices[currentQuestionIndex];
+
+  if (isLoading) {
+    return (
+      <div className="p-4 flex justify-center items-center min-h-screen">
+        <div className="text-xl font-bold">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="p-4">

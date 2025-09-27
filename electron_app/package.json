@@ -8,7 +8,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build:all": "npm --prefix ./rendrer run build && npm run start",
+    "build:all": "bash -c 'rm -rf ./quiz/dist && mkdir -p ./quiz && cp -r ../quiz/dist ./quiz/dist || true' && npm --prefix ./rendrer run build && npm run start",
     "predist": "bash -c 'rm -rf ./quiz/dist && mkdir -p ./quiz && cp -r ../quiz/dist ./quiz/dist || true' && npm run copy-prisma && npm run generate-prisma && npm run ensure-db-schema",
     "copy-prisma": "bash -c 'mkdir -p ./prisma-binaries && cp -r ./node_modules/@prisma/engines/* ./prisma-binaries/ || true'",
     "generate-prisma": "prisma generate",

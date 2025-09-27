@@ -126,7 +126,6 @@ async function startHttpServer(HTTP_PORT, QUIZ_DIST) {
           cin: req.body.define.cin.toLowerCase(),
         },
       });
-      debugLog("info", "Found participant:", participant);
       if (!participant) {
         participant = await prisma.participant.create({
           data: {
@@ -138,6 +137,7 @@ async function startHttpServer(HTTP_PORT, QUIZ_DIST) {
           },
         });
       }
+       
       await prisma.lsgrResult.create({
         data: {
           participantId: participant.id,
@@ -151,23 +151,23 @@ async function startHttpServer(HTTP_PORT, QUIZ_DIST) {
           lsgr8: req.body.data[7],
           lsgr9: req.body.data[8],
           lsgr10: req.body.data[9],
-          result: req.body.data[10],
+          result: req.body.lsgrResult,
         },
       });
       await prisma.otherqcm.create({
         data: {
           participantId: participant.id,
-          qcm1: req.body.data2[0],
-          qcm2: req.body.data2[1],
-          qcm3: req.body.data2[2],
-          qcm4: req.body.data2[3],
-          qcm5: req.body.data2[4],
-          qcm6: req.body.data2[5],
-          qcm7: req.body.data2[6],
-          qcm8: req.body.data2[7],
-          qcm9: req.body.data2[8],
-          qcm10: req.body.data2[9],
-          result: req.body.data[10],
+          qcm1: req.body.data[10],
+          qcm2: req.body.data[11],
+          qcm3: req.body.data[12],
+          qcm4: req.body.data[13],
+          qcm5: req.body.data[14],
+          qcm6: req.body.data[15],
+          qcm7: req.body.data[16],
+          qcm8: req.body.data[17],
+          qcm9: req.body.data[18],
+          qcm10: req.body.data[19],
+          result: req.body.otherqcmResult,
         },
       });
       debugLog("info", "Result saved for participant:", participant.id);
@@ -187,6 +187,12 @@ async function startHttpServer(HTTP_PORT, QUIZ_DIST) {
         erro: "Database not initialized",
       });
     }
+    const session = await prisma.session.findUnique({
+      where: { sessionId: req.body.sessionId },
+    });
+    if (!session) {
+      return res.status(400).json({ ok: false, error: "Invalid sessionId" });
+    }
 
     const participant = await prisma.participant.findFirst({
       where: {
@@ -196,13 +202,20 @@ async function startHttpServer(HTTP_PORT, QUIZ_DIST) {
         cin: req.body.define.cin.toLowerCase(),
         motif: req.body.define.motif.toLowerCase(),
       },
-      includes :{
-        result : true,
-        otherqcm : true,
+      include: {
+        results: {
+          orderBy: { createdAt: "desc" },
+          take: 1,
+        },
+        otherqcm: {
+          orderBy: { createdAt: "desc" },
+          take: 1,
+        },
       }
     });
-    if (!participant){return res.status(204)}
-    return res.status(200).json({lsgr : participant.result , otherqcm : participant.otherqcm})
+    console.log(participant)
+    if (!participant){return res.status(204).json({})}
+    return res.status(200).json({lsgr : participant.results , otherqcm : participant.otherqcm})
   });
 
   appServer.get("/server-info", (req, res) => {
