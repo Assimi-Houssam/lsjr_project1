@@ -27,7 +27,7 @@ model Session {
 
 model lsgrResult {
   id            String      @id @default(cuid())
-  participantId String      @unique
+  participantId String      
   participant   Participant @relation(fields: [participantId], references: [id] , onDelete: Cascade)
   lsgr1         Boolean     @default(false)
   lsgr2         Boolean     @default(false)
@@ -39,6 +39,26 @@ model lsgrResult {
   lsgr8         Boolean     @default(false)
   lsgr9         Boolean     @default(false)
   lsgr10        Boolean     @default(false)
+  result        Boolean     @default(false)
+  createdAt     DateTime    @default(now())
+}
+
+
+model otherqcm {
+  id            String      @id @default(cuid())
+  participantId String      
+  participant   Participant @relation(fields: [participantId], references: [id] , onDelete: Cascade)
+  qcm1         Boolean     @default(false)
+  qcm2         Boolean     @default(false)
+  qcm3         Boolean     @default(false)
+  qcm4         Boolean     @default(false)
+  qcm5         Boolean     @default(false)
+  qcm6         Boolean     @default(false)
+  qcm7         Boolean     @default(false)
+  qcm8         Boolean     @default(false)
+  qcm9         Boolean     @default(false)
+  qcm10        Boolean     @default(false)
+  result       Boolean     @default(false)
   createdAt     DateTime    @default(now())
 }
 
@@ -50,7 +70,8 @@ model Participant {
   company   String
   cin       String
   motif     String
-  results   lsgrResult?
+  results   lsgrResult[]
+  otherqcm  otherqcm[]
   createdAt DateTime    @default(now())
   synced    Boolean     @default(false)
 }

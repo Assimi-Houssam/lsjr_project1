@@ -29,7 +29,7 @@ export default function Navbar({
     <div className="flex h-screen">
 
       {/* Fixed Sidebar */}
-        <div className="fixed left-8 top-20 bottom-24 w-56 bg-gradient-to-b from-orange-500/80 to-orange-500/70 z-10 rounded-2xl shadow-2xl shadow-black/60 ">
+        <div className="fixed left-8 top-20 bottom-24 w-64 bg-gradient-to-b from-orange-500/80 to-orange-500/70 z-10 rounded-2xl shadow-2xl shadow-black/60 ">
         {/* Logo Section */}
         <div className="flex items-center justify-center p-6">
           <img className="h-auto w-auto" src={logo1} alt="Logo" />
@@ -37,10 +37,10 @@ export default function Navbar({
 
         {/* Navigation Buttons */}
         <nav className="mt-8 px-4">
-          <div className="space-y-4">
+          <div className="space-y-5">
             <button
               onClick={onCreateSession}
-              className="w-full flex items-center px-4 py-3 text-left text-white bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+              className="w-full flex items-center px-4 py-3 text-[17px] text-left text-white bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
             >
               <svg
                 className="w-5 h-5 mr-3"
@@ -60,7 +60,7 @@ export default function Navbar({
 
             <button
               onClick={onDemoQuiz}
-              className="w-full flex items-center px-4 py-3 text-left text-white bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+              className="w-full flex items-center px-4 py-3 text-[17px] text-left text-white bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
             >
               <svg
                 className="w-5 h-5 mr-3"
@@ -80,7 +80,7 @@ export default function Navbar({
 
             <button
               onClick={onGetSession}
-              className="w-full flex items-center px-4 py-3 text-left text-white bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
+              className="w-full flex items-center px-4 py-3 text-[17px] text-left text-white bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 backdrop-blur-sm"
             >
               <svg
                 className="w-5 h-5 mr-3"

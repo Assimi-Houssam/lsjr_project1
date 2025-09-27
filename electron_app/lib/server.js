@@ -111,53 +111,98 @@ async function startHttpServer(HTTP_PORT, QUIZ_DIST) {
           .json({ ok: false, error: "Database not initialized" });
       }
       debugLog("info", "submit-result body:", req.body);
-        const session  = await prisma.session.findUnique({
-          where: { sessionId: req.body.sessionId },
-        });
-        if (!session) {
-          return res.status(400).json({ ok: false, error: "Invalid sessionId" });
-        }
-        let participant = await prisma.participant.findFirst({
-          where: { sessionId: session.id,
-             name: req.body.define.name ,
-              company: req.body.define.company,
-              motif: req.body.define.motif,
-              cin : req.body.define.cin},
-        });
-        debugLog("info", "Found participant:", participant);
-        if (!participant) {
-          participant = await prisma.participant.create({
-            data: {
-              sessionId: session.id,
-              name: req.body.define.name,
-              company: req.body.define.company,
-              cin : req.body.define.cin,
-              motif: req.body.define.motif,
-            },
-          });
-        }
-        await prisma.lsgrResult.create({
+      const session = await prisma.session.findUnique({
+        where: { sessionId: req.body.sessionId },
+      });
+      if (!session) {
+        return res.status(400).json({ ok: false, error: "Invalid sessionId" });
+      }
+      let participant = await prisma.participant.findFirst({
+        where: {
+          sessionId: session.id,
+          name: req.body.define.name.toLowerCase(),
+          company: req.body.define.company.toLowerCase(),
+          motif: req.body.define.motif.toLowerCase(),
+          cin: req.body.define.cin.toLowerCase(),
+        },
+      });
+      debugLog("info", "Found participant:", participant);
+      if (!participant) {
+        participant = await prisma.participant.create({
           data: {
-            participantId: participant.id,
-            lsgr1: req.body.data[0],
-            lsgr2: req.body.data[1],
-            lsgr3: req.body.data[2],
-            lsgr4: req.body.data[3],
-            lsgr5: req.body.data[4],
-            lsgr6: req.body.data[5],
-            lsgr7: req.body.data[6],
-            lsgr8: req.body.data[7],
-            lsgr9: req.body.data[8],
-            lsgr10: req.body.data[9],
+            sessionId: session.id,
+            name: req.body.define.name.toLowerCase(),
+            company: req.body.define.company.toLowerCase(),
+            cin: req.body.define.cin.toLowerCase(),
+            motif: req.body.define.motif.toLowerCase(),
           },
         });
-        debugLog("info", "Result saved for participant:", participant.id);
+      }
+      await prisma.lsgrResult.create({
+        data: {
+          participantId: participant.id,
+          lsgr1: req.body.data[0],
+          lsgr2: req.body.data[1],
+          lsgr3: req.body.data[2],
+          lsgr4: req.body.data[3],
+          lsgr5: req.body.data[4],
+          lsgr6: req.body.data[5],
+          lsgr7: req.body.data[6],
+          lsgr8: req.body.data[7],
+          lsgr9: req.body.data[8],
+          lsgr10: req.body.data[9],
+          result: req.body.data[10],
+        },
+      });
+      await prisma.otherqcm.create({
+        data: {
+          participantId: participant.id,
+          qcm1: req.body.data2[0],
+          qcm2: req.body.data2[1],
+          qcm3: req.body.data2[2],
+          qcm4: req.body.data2[3],
+          qcm5: req.body.data2[4],
+          qcm6: req.body.data2[5],
+          qcm7: req.body.data2[6],
+          qcm8: req.body.data2[7],
+          qcm9: req.body.data2[8],
+          qcm10: req.body.data2[9],
+          result: req.body.data[10],
+        },
+      });
+      debugLog("info", "Result saved for participant:", participant.id);
       return res.json({ ok: true });
     } catch (err) {
       console.error("submit-result error:", err);
       debugLog("error", "submit-result error:", err);
       return res.status(500).json({ ok: false, error: String(err) });
     }
+  });
+
+  appServer.post("/participant-info", async (req, res) => {
+    const prisma = getPrisma();
+    if (!prisma) {
+      return res.status(500).json({
+        ok: false,
+        erro: "Database not initialized",
+      });
+    }
+
+    const participant = await prisma.participant.findFirst({
+      where: {
+        sessionId: session.id,
+        name: req.body.define.name.toLowerCase(),
+        company: req.body.define.company.toLowerCase(),
+        cin: req.body.define.cin.toLowerCase(),
+        motif: req.body.define.motif.toLowerCase(),
+      },
+      includes :{
+        result : true,
+        otherqcm : true,
+      }
+    });
+    if (!participant){return res.status(204)}
+    return res.status(200).json({lsgr : participant.result , otherqcm : participant.otherqcm})
   });
 
   appServer.get("/server-info", (req, res) => {
